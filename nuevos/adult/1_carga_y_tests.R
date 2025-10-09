@@ -67,4 +67,3 @@ ggplot(data, aes(x = income_status, y = age, fill = income_status)) +
 
 t_test_age <- t.test(age ~ income_status, data = data)
 t_test_age
-s
