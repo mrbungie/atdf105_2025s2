@@ -27,7 +27,7 @@ library(ggcorrplot)   # Correlaciones visuales
 # IMPORTANTE: R no reconoce "\" como separador de carpetas, debes usar "/".
 # Ejemplo: "C:\\Documentos\\archivo.xlsx" → "C:/Documentos/archivo.xlsx"
 
-data <- read_excel("BBDD_EPA_NIVELES_ABSTRACCION_CLASS-Minaría_de_datos.xlsx")
+data <- read_excel("BBDD_EPA_NIVELES_ABSTRACCION_CLASS.xlsx")
 
 
 # ==========================================================
@@ -70,6 +70,11 @@ data = rename(data, c(
 # 7. SEPARAR VARIABLES DE ENTRADA
 # ==========================================================
 # Seleccionamos las variables que se usarán para el ACP
+# Esto selecciona los variables de indice 2 a 9.
+# Si quisieramos ver los nombres de columnas podemos usar colnames
+# colnames(data)
+
+# NOTA: 2 a 9 son las variables desde Modalidad a Titulo, ambos inclusive.
 abs <- select(data, 2:9)
 
 
@@ -85,6 +90,8 @@ abs <- select(data, 2:9)
 # ----------------------------------------------------------
 # El primer paso es observar el comportamiento de las variables.
 # Lo ideal es que todas estén correlacionadas (valores cercanos a 1 o -1).
+# NOTA: Cuando decimos "ideal" nos referimos a que este método se utiliza normalmente
+# en estas situaciones.
 cor(abs) %>% round(2)
 
 
@@ -125,6 +132,11 @@ acp$x
 # ----------------------------------------------------------
 # El gráfico muestra qué cantidad de varianza explica cada componente.
 # Permite decidir cuántos componentes conservar (los que más varianza explican).
+# Normalmente utilizaremos un método del "codo".
+# Donde el método del codo significa elegir el punto previo a una
+# "estabilización del valor" (i.e., cuando la ganancia marginal o visualmente la pendiente
+# de varianza explicada por agregar un nuevo componente comienza a ser pequeña).
+# En este caso, por inspección visual del screen plot, podríamos utilizar 3, 4 o 5.
 screeplot(acp, type = "lines")
 
 
