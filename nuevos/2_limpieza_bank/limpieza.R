@@ -85,3 +85,5 @@ data_duplicada %>% distinct(row_id, .keep_all = TRUE)
 data_duplicada %>% distinct(row_id, balance, .keep_all = TRUE)
 
 # 7. Filtrar por una variable
+adultos <- data %>% filter(age < 50 & age >30)
+adultos
