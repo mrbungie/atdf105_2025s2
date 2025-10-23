@@ -1,6 +1,6 @@
 # 📝 Quiz: Fuentes de Información, ETL y PCA
 
-## 🔹 Preguntas Tipo Control (Semana 4) - Aplicar / Analizar
+## Preguntas
 
 **Contexto:**
 En la empresa Solar Andes S.A., usted recibe un dataset integrado por el equipo de Data Engineering. Debe verificar las fuentes y preparar la información para análisis.
@@ -13,7 +13,6 @@ En la empresa Solar Andes S.A., usted recibe un dataset integrado por el equipo 
 
 a) Sensores SCADA  
 b) Documentales técnicos  
- segundo
 c) Base de datos corporativa  
 d) Entrevistas a operadores
 
@@ -63,7 +62,7 @@ d) La frecuencia de los NA
 
 ---
 
-## 🔸 Preguntas Tipo Solemne (Semana 5) - Entender / Evaluar / Aplicar con Razonamiento
+## Más preguntas
 
 **Contexto:**
 En una investigación sobre eficiencia de plantas solares, se clasifican las fuentes y se prepara la data para un modelo de análisis.
@@ -127,25 +126,24 @@ d) Transitorias y no interpretables
 
 ## 📊 Respuestas Esperadas
 
-**Preguntas Tipo Control:**
-1. ?  
-2. ?  
-3. ?  
-4. ?  
-5. ?
+**Preguntas 1-5:**
+1. c) Base de datos corporativa  
+2. a) Fuentes primarias  
+3. a) Eliminar duplicados  
+4. d) Crear modelo predictivo sin limpieza previa  
+5. b) La varianza que explican  
 
-**Preguntas Tipo Solemne:**
-6. ?  
-7. ?  
-8. ?  
-9. ?  
-10. ?
+**Preguntas 6-10:**
+6. b) Lecturas de sensores SCADA  
+7. b) Derivarse de documentos primarios y analizar información existente  
+8. b) Evaluar su valor y confiabilidad  
+9. b) Transformar y cargar datos provenientes de fuentes diversas para su análisis  
+10. b) Independientes y ordenadas por varianza explicada
 
 ---
 
 **Instrucciones:**
 - Lea cada pregunta cuidadosamente
 - Marque la alternativa que considere correcta
-- Para preguntas tipo solemne, justifique brevemente su respuesta
 - Consulte el archivo `respuestas_explicadas.md` para verificar sus respuestas
 

@@ -1,6 +1,6 @@
 # ✅ Respuestas Explicadas: Fuentes de Información, ETL y PCA
 
-## 🔹 Respuestas Tipo Control (Semana 4)
+## Respuestas Preguntas 1-5
 
 ---
 
@@ -101,7 +101,7 @@ El objetivo del PCA es capturar la **mayor información posible** en los primero
 
 ---
 
-## 🔸 Respuestas Tipo Solemne (Semana 5)
+## Respuestas Preguntas 6-10
 
 ---
 
