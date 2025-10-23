@@ -231,12 +231,20 @@ Reducción de dimensionalidad para identificar:
 **Nota:** El ETL imputa parcialmente algunos valores pero deja otros intencionalmente como NA para que practiques técnicas de imputación.
 
 ### Errores Intencionales para Detección
-El dataset también contiene errores sutiles introducidos intencionalmente:
-- Algunas temperaturas de módulo ligeramente atípicas
-- Algunos valores de eficiencia sospechosamente altos
-- Algunas inconsistencias entre potencia DC y AC
+El dataset contiene **13 tipos de errores** introducidos intencionalmente para práctica de detección:
 
-**Ejercicio recomendado:** Usa EDA para detectar estos errores antes del análisis principal.
+1. **Temperaturas atípicas:** Variaciones de ±5°C en temperatura de módulo
+2. **Eficiencias anómalas:** Valores multiplicados por 1.5 y eficiencias imposibles (> 2.0)
+3. **Ratios DC/AC inconsistentes:** Ratios extremos (5, 15) y físicamente imposibles (< 1)
+4. **Irradiación negativa:** Valores físicamente imposibles de radiación solar
+5. **Irradiación excesiva:** Valores > 2.0 kW/m² (irrealista)
+6. **Inconsistencias térmicas:** Temperatura módulo < temperatura ambiente
+7. **Inconsistencias de potencia:** Potencia AC > potencia DC
+8. **Inconsistencias temporales:** Irradiación > 0 durante horas nocturnas
+9. **Temperaturas extremas:** Módulos > 90°C y ambiente < -15°C
+10. **Patrones discretos sospechosos:** Valores de irradiación con precisión artificial
+
+**Ejercicio recomendado:** Usa EDA, boxplots, scatter plots y validación de reglas de negocio para detectar estos errores antes del análisis principal.
 
 ### Variables NO Incluidas
 - Humedad relativa (no disponible en datos fuente)

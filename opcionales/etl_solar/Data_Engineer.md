@@ -231,13 +231,26 @@ filter(
 ```
 
 **Errores introducidos intencionalmente (sección 5.5 del ETL):**
+
 1. **Temperaturas atípicas:** ~1% de module_temp modificadas con ±5°C
 2. **Eficiencias anómalas:** ~0.5% multiplicadas por 1.5
 3. **Ratios DC/AC inconsistentes:** ~0.8% con ratios extremos (5 o 15)
+4. **Irradiación negativa:** ~0.3% de valores negativos (físicamente imposible)
+5. **Eficiencias imposibles:** ~0.4% con valores > 2.0 (range 2.5-5.0)
+6. **Inconsistencias térmicas:** ~0.6% con temperatura módulo < temperatura ambiente
+7. **Potencia AC > DC:** ~0.5% con inversión de sentido físico
+8. **Irradiación excesiva:** ~0.3% con valores > 2.0 kW/m² (2.5-4.0)
+9. **Inconsistencias temporales:** ~0.7% con irradiación > 0 en horas nocturnas
+10. **Ratios imposibles:** ~0.4% con ratios DC/AC < 1
+11. **Temperaturas extremas:** ~0.3% con módulos > 90°C (95-120°C)
+12. **Temperaturas ambiente extremas:** ~0.3% con valores < -15°C (-25 a -20°C)
+13. **Patrones discretos:** ~0.2% con irradiación en múltiplos improbables
+
+**Total de tipos de errores:** 13
 
 **Filas eliminadas:** 0 (errores sutiles mantenidos para análisis)
 
-**Ejercicio recomendado:** Detectar estos errores con boxplots, scatter plots y validación de business rules antes del análisis principal.
+**Ejercicio recomendado:** Detectar estos errores con boxplots, scatter plots, histogramas, validación de business rules y análisis de outliers antes del análisis principal.
 
 ---
 

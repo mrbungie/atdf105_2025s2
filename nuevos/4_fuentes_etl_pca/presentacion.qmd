@@ -1,0 +1,551 @@
+---
+title: "Del dato a la decisión"
+subtitle: "Fuentes de información, ETL y análisis de datos con R"
+author: "Módulo AE2"
+date: today
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    incremental: true
+    navigation: slide
+    code-fold: true
+    code-summary: "Ver código"
+    chalkboard:
+      enabled: true
+    preview-links: auto
+---
+
+## Objetivos de la sesión
+
+::: {.columns}
+
+::: {.column width="50%"}
+- Reconocer los tipos de **fuentes de información** y su confiabilidad
+- Comprender el rol del **ETL y Data Warehouse** en la minería de datos
+:::
+
+::: {.column width="50%"}
+- Aplicar procedimientos de **limpieza y tratamiento de anomalías**
+- Observar un **análisis de componentes principales (PCA)** en un caso real de energía solar
+:::
+
+:::
+
+Tiempo: 90 min (15 + 40 + 35)
+
+---
+
+## Lo que aprenderás hoy
+
+- Reconocer fuentes de información y su confiabilidad
+- Manejar datos ruidosos y faltantes
+- Analizar con componentes principales (PCA)
+- Aplicación práctica en caso de eficiencia solar
+
+---
+
+## Fuentes de información (Leal 2021)
+
+> Instrumentos o recursos que satisfacen una necesidad informativa.
+
+> Su objetivo: permitir localizar y validar la información adecuada.
+
+---
+
+## Clasificación de fuentes
+
+| Tipo | Características | Ejemplos |
+|------|----------------|----------|
+| **Primarias** | Información original, directa | Entrevistas, sensores SCADA, experimentos |
+| **Secundarias** | Derivadas de fuentes primarias | Libros, informes, bases de datos externas |
+| **Terciarias** | Remiten a fuentes secundarias | Catálogos, índices, directorios |
+
+**Importancia:** elegir el nivel adecuado según el problema a resolver.
+
+---
+
+## Uso práctico de las fuentes
+
+**El analista de datos usa las tres tipos según necesidad:**
+
+- **Dependiendo de cómo le lleguen los datos** al proyecto
+- **Según la naturaleza del problema** a resolver
+- **Según la disponibilidad** de información
+
+**Ejemplo:** Un mismo proyecto puede requerir sensores (primaria), reportes técnicos (secundaria) y bibliografía especializada (terciaria)
+
+---
+
+## ¿Qué debes comprender sobre fuentes?
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Debes saber:**
+
+- Qué es una fuente de información
+- Cómo se clasifica (Prim., Sec., Ter.)
+- Cómo evaluar su valor informativo
+:::
+
+::: {.column width="50%"}
+**Criterios de evaluación:**
+
+- **Actualidad** (vigencia temporal)
+- **Objetividad** (sin sesgos)
+- **Autoridad** (institución reconocida)
+:::
+
+:::
+
+---
+
+## Importante sobre repositorios
+
+> **Una base de datos o Data Warehouse NO es una fuente**
+
+Son **repositorios** donde se integran las fuentes
+
+**Ejemplo:**
+
+- **Fuente:** Sensor SCADA (primaria)
+- **Repositorio:** Base de datos que almacena lecturas del sensor
+
+---
+
+## Ejemplos de confiabilidad
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Confiable**
+
+Datos SCADA 2024  
+(actuales y directos)
+
+Blog con autoría experta  
+(documentación de calidad)
+:::
+
+::: {.column width="50%"}
+**No confiable**
+
+Blog sin autoría  
+(falta de credibilidad)
+
+Datos obsoletos  
+(sin actualidad)
+:::
+
+:::
+
+---
+
+## Del dato a la información: proceso ETL
+
+```{mermaid}
+graph LR
+    A[Fuentes] --> B[ETL]
+    B --> C[Data Warehouse]
+    C --> D[Análisis]
+```
+
+---
+
+## ¿Qué es el ETL?
+
+**El ETL es el puente entre fuentes y análisis**
+
+::: {.columns}
+
+::: {.column width="33%"}
+**E - Extract**
+
+Extrae información desde distintas fuentes
+
+Estructuradas o no estructuradas
+:::
+
+::: {.column width="33%"}
+**T - Transform**
+
+Limpia, estandariza, unifica unidades
+
+Maneja NA, errores
+:::
+
+::: {.column width="33%"}
+**L - Load**
+
+Carga datos transformados
+
+En entorno analítico
+:::
+
+:::
+
+**Objetivo:** Datos consistentes, listos para minería o BI
+
+---
+
+## Etapas del proceso ETL - Caso Solar
+
+| Etapa | Acción | Caso solar |
+|-------|--------|------------|
+| **E – Extract** | Extrae datos de fuentes diversas | Sensores SCADA, API meteorológica |
+| **T – Transform** | Limpieza, homogeneización, integración | Unificar unidades, imputar NA |
+| **L – Load** | Carga en repositorio analítico | `solar_efficiency.csv` |
+
+---
+
+## Data Warehouse (DW)
+
+**Arquitectura de almacenamiento para análisis y toma de decisiones**
+
+- Integra información histórica y heterogénea (ERP, CRM, sensores, archivos)
+- Diseños comunes: **modelo estrella** y **snowflake**
+- Permite construir *datamarts* por área (finanzas, energía, clientes)
+
+---
+
+## Propiedades del DW
+
+::: {.columns}
+
+::: {.column width="50%"}
+- Orientado a temas
+- Integrado
+:::
+
+::: {.column width="50%"}
+- No volátil
+- Variante en el tiempo
+:::
+
+:::
+
+---
+
+## Caso Solar Andes S.A.
+
+**Situación:** La empresa opera dos plantas fotovoltaicas en el norte de Chile.
+
+Un equipo de datos integró información de múltiples fuentes:
+
+**Fuentes Primarias:**
+- Sensores SCADA → potencia AC/DC, alarmas
+- Experimentos de campo → mediciones directas de eficiencia
+
+**Fuentes Secundarias:**
+- API meteorológica → radiación, temperatura, humedad
+- Reportes técnicos → especificaciones de módulos
+
+**Fuentes Terciarias:**
+- Bibliografía sobre teoría fotovoltaica → coeficiente térmico (α = –0.0045 / °C)
+- Catálogos de fabricantes → parámetros nominales
+
+---
+
+## Resultado ETL
+
+**Dataset:** `solar_efficiency.csv`
+
+**Variables clave:**
+
+```r
+# Variables meteorológicas
+ambient_temp, module_temp, irradiation
+
+# Variables derivadas
+temp_diff_module_ambient, temp_excess
+
+# Variables de eficiencia
+efficiency_kwh_kwp, total_dc_power, total_ac_power
+```
+
+---
+
+## Hipótesis de trabajo
+
+::: {.columns}
+
+::: {.column width="50%"}
+**H1:** La temperatura de módulo reduce la eficiencia
+:::
+
+::: {.column width="50%"}
+**H2:** Radiación y temperatura explican la mayor varianza del rendimiento
+:::
+
+:::
+
+---
+
+## Tratamiento de datos ruidosos y anómalos
+
+> Los valores anómalos no siempre son errores; pueden reflejar casos especiales.
+
+> El objetivo es decidir si conservar, corregir o eliminar.
+
+---
+
+## ¿Qué debes saber decidir?
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Ante datos:**
+
+- Faltantes (NA)
+- Erróneos
+- Anómalos
+:::
+
+::: {.column width="50%"}
+**Pregunta clave:**
+
+¿Cuándo un valor "raro" es ruido y cuándo es información?
+:::
+
+:::
+
+---
+
+## Estrategias comunes
+
+| Estrategia | Descripción | Ejemplo solar |
+|------------|-------------|---------------|
+| **Ignorar** | Dejar pasar si el modelo es robusto | Árbol de decisión que tolera outliers |
+| **Filtrar columna** | Eliminar o reemplazar por indicador discreto | Crear `temp_erronea = 1/0` |
+| **Filtrar fila** | Suprimir registros problemáticos | Días con sensores defectuosos |
+| **Reemplazar valor** | Sustituir por media, mediana o estimado | Imputar `ambient_temp` con media |
+| **Discretizar** | Convertir continuo → categórico | `irradiation` → categorías baja/media/alta |
+
+---
+
+## Detección en el caso solar
+
+**¿Cómo detectar valores imposibles?**
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Ejemplos:**
+
+- Radiación negativa
+- Temperatura > 100°C
+- Eficiencia > 1.0
+:::
+
+::: {.column width="50%"}
+**Decisión:**
+
+¿Imputar, eliminar o mantener?
+:::
+
+:::
+
+---
+
+## Recomendaciones de limpieza
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Buenas prácticas:**
+
+- Analizar la causa antes de eliminar
+- Documentar el criterio aplicado
+- Evitar introducir sesgos
+:::
+
+::: {.column width="50%"}
+**Recordar:**
+
+- Eliminar filas puede sesgar resultados
+- Una buena imputación depende del contexto
+:::
+
+:::
+
+---
+
+## Errores críticos e inconsistencias
+
+- Los errores son graves cuando afectan variables **clase** o **objetivo** del modelo
+- Ejemplo: dos registros idénticos excepto en la etiqueta → *inconsistencia*
+- Algunos métodos de ML no las "digerirán", generando fallas
+
+**Solución:** Eliminar todos los ejemplos inconsistentes o decidir cuál conservar
+
+---
+
+## Flujo analítico en R
+
+### 1. Cargar y explorar
+
+```r
+library(dplyr)
+library(readr)
+
+datos <- read_csv("solar_efficiency.csv")
+summary(datos)
+```
+
+**Objetivo:** entender el propósito de cada bloque
+
+---
+
+## Flujo analítico en R
+
+### 2. Diagnóstico de NA y outliers
+
+```r
+boxplot(datos$ambient_temp)
+boxplot(datos$module_temp)
+```
+
+**Identificar:** valores faltantes y atípicos
+
+---
+
+## Flujo analítico en R
+
+### 3. Tratamiento e imputación
+
+```r
+# Imputar temperatura ambiente con media
+datos$ambient_temp <- ifelse(is.na(datos$ambient_temp),
+                            mean(datos$ambient_temp, na.rm=TRUE),
+                            datos$ambient_temp)
+
+# Imputar irradiación con 0 (sin sol)
+datos$irradiation <- ifelse(is.na(datos$irradiation), 0, 
+                            datos$irradiation)
+```
+
+---
+
+## Flujo analítico en R
+
+### 4. Estandarización y PCA
+
+```r
+# Seleccionar variables para PCA
+variables_pca <- datos %>% 
+  select(ambient_temp, module_temp, irradiation,
+         temp_diff_module_ambient, temp_excess)
+
+# Estandarizar
+variables_estandarizadas <- scale(variables_pca)
+
+# Aplicar PCA
+pca <- prcomp(variables_estandarizadas, 
+              center=FALSE, scale.=FALSE)
+screeplot(pca, type="lines")
+```
+
+---
+
+## ¿Qué hace el PCA?
+
+**Componentes principales - Conceptos clave:**
+
+- Transforma atributos originales en nuevos **componentes no correlacionados**
+- Los componentes se ordenan por la **varianza explicada**
+- No "crea conocimiento", sino que **simplifica estructuras** de datos complejos
+- Técnica de análisis no supervisado
+
+---
+
+## ¿Qué debes interpretar del PCA?
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Ordenamiento:**
+
+Los primeros componentes capturan la mayor información
+:::
+
+::: {.column width="50%"}
+**Utilidad:**
+
+Exploración y reducción de dimensionalidad
+:::
+
+:::
+
+---
+
+## Interpretación solar
+
+**PC1 dominado por:**
+
+- `irradiation` (+) - mayor irradiación aumenta PC1
+- `module_temp` (–) - mayor temperatura reduce PC1
+
+→ **Confirma H1 y H2**
+
+**Observación:** Radiación y temperatura dominan el primer componente → variables clave para la eficiencia
+
+---
+
+## Síntesis integradora
+
+```{mermaid}
+graph TD
+    A[Fuentes<br/>Primarias, Secundarias, Terciarias] --> B[ETL<br/>Extract - Transform - Load]
+    B --> C[Datos consolidados]
+    C --> D[Limpieza / Imputación<br/>Manejo de anomalías]
+    D --> E[Análisis PCA]
+    E --> F[Hallazgos sobre<br/>eficiencia solar]
+```
+
+---
+
+## Aprendizaje integrador
+
+> Un analista de datos debe saber:
+
+**De dónde provienen los datos**
+
+**Cómo se transforman**
+
+**Cómo se limpian**
+
+**Cómo se interpretan**
+
+---
+
+## Cierre
+
+> **Del dato crudo a la información útil:**
+
+> - Las fuentes aportan materia prima
+> - El ETL la transforma en información estructurada
+> - La limpieza asegura confiabilidad
+> - El análisis (PCA) genera conocimiento
+
+---
+
+## Mensaje final
+
+> La minería de datos no empieza en el algoritmo, sino en la **calidad y comprensión del origen de la información**.
+
+> Saber **de dónde vienen, cómo se preparan y cómo se reducen los datos** es el paso que diferencia a un analista técnico de un profesional que toma decisiones.
+
+> "De fuentes confiables surgen datos limpios;  
+> de datos limpios, decisiones inteligentes."  
+> — Leal (2021)
+
+---
+
+## Fin
+
+### ¿Preguntas?
+
+**Tiempo estimado:** 90 min (15 + 40 + 35)
+
+**Próximo paso:** Ejercicio práctico `ejercicio_solar_pca.R`

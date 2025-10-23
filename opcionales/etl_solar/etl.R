@@ -310,10 +310,71 @@ solar_efficiency <- solar_efficiency %>%
     # 3. Introducir algunas potencias DC inconsistentes con AC
     total_dc_power = ifelse(runif(n()) < 0.008 & total_ac_power > 0,
                             total_ac_power * sample(c(15, 5), n(), replace = TRUE),  # Ratios anómalos
-                            total_dc_power)
+                            total_dc_power),
+    
+    # ====================================
+    # 10 ERRORES ADICIONALES PARA PRÁCTICA
+    # ====================================
+    
+    # 4. Introducir valores negativos de irradiación (físicamente imposible)
+    irradiation = ifelse(runif(n()) < 0.003,
+                         -abs(runif(n(), 0.1, 0.5)),
+                         irradiation),
+    
+    # 5. Introducir eficiencias imposibles (> 2.0)
+    efficiency_kwh_kwp = ifelse(runif(n()) < 0.004 & efficiency_kwh_kwp > 0,
+                                 runif(n(), 2.5, 5.0),
+                                 efficiency_kwh_kwp),
+    
+    # 6. Introducir casos donde temperatura módulo < temperatura ambiente (físicamente improbable)
+    module_temp = ifelse(runif(n()) < 0.006 & !is.na(ambient_temp) & !is.na(module_temp),
+                         ambient_temp - abs(runif(n(), 5, 15)),
+                         module_temp),
+    
+    # 7. Introducir potencias AC mayores que DC (inconsistente)
+    total_ac_power = ifelse(runif(n()) < 0.005 & total_dc_power > 0,
+                            total_dc_power * runif(n(), 1.2, 2.0),
+                            total_ac_power),
+    
+    # 8. Introducir irradiación excesivamente alta (> 2.0 kW/m²)
+    irradiation = ifelse(runif(n()) < 0.003,
+                         runif(n(), 2.5, 4.0),
+                         irradiation),
+    
+    # 9. Introducir inconsistencias temporales: irradiación > 0 en horas nocturnas
+    irradiation = ifelse(runif(n()) < 0.007 & (hour >= 19 | hour <= 5),
+                         runif(n(), 0.3, 0.8),
+                         irradiation),
+    
+    # 10. Introducir ratios DC/AC físicamente imposibles
+    total_dc_power = ifelse(runif(n()) < 0.004 & total_ac_power > 0,
+                            total_ac_power * runif(n(), 0.1, 0.5),  # Ratios menores a 1 son imposibles
+                            total_dc_power),
+    
+    # 11. Introducir temperaturas módulo extremadamente altas (> 90°C)
+    module_temp = ifelse(runif(n()) < 0.003,
+                         runif(n(), 95, 120),
+                         module_temp),
+    
+    # 12. Introducir temperaturas ambiente extremadamente bajas (< -15°C)
+    ambient_temp = ifelse(runif(n()) < 0.003,
+                          runif(n(), -25, -20),
+                          ambient_temp),
+    
+    # 13. Introducir valores de irradiación en múltiplos improbables
+    irradiation = ifelse(runif(n()) < 0.002,
+                         round(irradiation * 10) / 10,  # Crear patrones discretos sospechosos
+                         irradiation)
   )
 
-cat("   ✓ Errores sutiles introducidos para práctica de detección\n")
+cat("   ✓ 13 tipos de errores introducidos para práctica de detección:\n")
+cat("     • Temperaturas atípicas y extremas\n")
+cat("     • Eficiencias imposibles\n")
+cat("     • Potencias DC/AC inconsistentes\n")
+cat("     • Irradiación negativa o excesiva\n")
+cat("     • Inconsistencias temporales\n")
+cat("     • Ratios físicamente imposibles\n")
+cat("     • Patrones sospechosos discretos\n")
 
 # ========================================================
 # 6. CARGA DE DATOS (Exportar)
