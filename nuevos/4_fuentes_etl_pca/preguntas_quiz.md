@@ -64,83 +64,84 @@ d) La frecuencia de los NA
 
 ## Más preguntas
 
-**Contexto:**
-En una investigación sobre eficiencia de plantas solares, se clasifican las fuentes y se prepara la data para un modelo de análisis.
+
 
 ---
 
 ### Pregunta 6
 
-Una fuente primaria corresponde a:
-
-a) Reportes internos de mantenimiento  
-b) Lecturas de sensores SCADA  
-c) Artículo académico sobre energía solar  
-d) Guía de catálogo de paneles
+Una fuente primaria en el contexto clínico corresponde a:
+a) Informes administrativos del hospital
+b) Registros electrónicos de pacientes y resultados de laboratorio
+c) Revisión bibliográfica sobre enfermedades infecciosas
+d) Manual de equipamiento médico
 
 ---
 
 ### Pregunta 7
 
-Las fuentes secundarias se caracterizan por:
-
-a) Provenir de observación directa  
-b) Derivarse de documentos primarios y analizar información existente  
-c) Contener solo resúmenes de fuentes terciarias  
-d) No tener autoría identificada
+Las fuentes secundarias en investigación clínica se caracterizan por:
+a) Basarse en observaciones directas del personal médico
+b) Analizar o resumir información proveniente de historias clínicas u otros estudios previos
+c) Ser recopilaciones sin referencias a estudios previos
+d) No tener un responsable identificado
 
 ---
 
 ### Pregunta 8
 
-La actualidad y la objetividad de una fuente permiten:
-
-a) Determinar su costo  
-b) Evaluar su valor y confiabilidad  
-c) Verificar si es primaria o terciaria  
-d) Eliminar datos duplicados
+La actualidad y la objetividad de una fuente médica permiten:
+a) Calcular los costos de atención
+b) Evaluar su valor científico y confiabilidad para la toma de decisiones clínicas
+c) Determinar si la fuente es pública o privada
+d) Identificar errores administrativos
 
 ---
 
 ### Pregunta 9
 
-El ETL permite:
-
-a) Formular hipótesis de investigación  
-b) Transformar y cargar datos provenientes de fuentes diversas para su análisis  
-c) Crear componentes principales  
-d) Evaluar hipótesis en PCA
+En un sistema de información hospitalaria, un proceso ETL permite:
+a) Formular diagnósticos clínicos
+b) Extraer, transformar y cargar datos de distintas áreas (laboratorio, farmacia, urgencias) para su análisis
+c) Elaborar gráficos de pacientes en tiempo real
+d) Evaluar hipótesis médicas mediante pruebas estadísticas
 
 ---
 
 ### Pregunta 10
 
-El PCA genera nuevas variables que se caracterizan por ser:
-
-a) Dependientes y redundantes  
-b) Independientes y ordenadas por varianza explicada  
-c) Nominales y categóricas  
-d) Transitorias y no interpretables
-
----
-
-## 📊 Respuestas Esperadas
-
-**Preguntas 1-5:**
-1. c) Base de datos corporativa  
-2. a) Fuentes primarias  
-3. a) Eliminar duplicados  
-4. d) Crear modelo predictivo sin limpieza previa  
-5. b) La varianza que explican  
-
-**Preguntas 6-10:**
-6. b) Lecturas de sensores SCADA  
-7. b) Derivarse de documentos primarios y analizar información existente  
-8. b) Evaluar su valor y confiabilidad  
-9. b) Transformar y cargar datos provenientes de fuentes diversas para su análisis  
-10. b) Independientes y ordenadas por varianza explicada
+En un análisis de componentes principales (PCA) aplicado a datos de pacientes, las nuevas variables generadas se caracterizan por ser:
+a) Dependientes y redundantes
+b) Independientes y ordenadas según la varianza clínica que explican
+c) Categóricas y nominales
+d) Temporales y no cuantificables
 
 ---
+
+Pregunta 11
+
+Cuando se detectan datos faltantes en registros clínicos, la primera acción recomendada es:
+a) Eliminar todos los registros incompletos sin revisión
+b) Analizar la causa y el patrón de los datos faltantes antes de decidir su tratamiento
+c) Sustituir automáticamente los valores por ceros
+d) Ignorar los datos ausentes si el tamaño de la muestra es grande
+
+Pregunta 12
+
+Un ejemplo de dato erróneo en una base de pacientes sería:
+a) Un valor de presión arterial de 120/80 mmHg
+b) Un paciente de 35 años con diagnóstico pediátrico exclusivo
+c) Un resultado de laboratorio actualizado
+d) Un valor de glucosa dentro del rango normal
+
+Pregunta 13
+
+El tratamiento de datos faltantes mediante imputación consiste en:
+a) Eliminar los registros con errores tipográficos
+b) Sustituir los valores ausentes por estimaciones coherentes (media, mediana o modelo predictivo)
+c) Asignar valores aleatorios sin relación con los datos
+d) Convertir todos los datos numéricos en texto
+
 
 **Instrucciones:**
 - Lea cada pregunta cuidadosamente
