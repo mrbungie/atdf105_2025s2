@@ -76,12 +76,15 @@ plot_data_complete <- iris_numerico %>%
   )
 p_2d_complete <- ggplot(plot_data_complete, aes(x = petal.length, y = petal.width, 
                                                  color = cluster, shape = variety)) +
-  geom_point(size = 3, alpha = 0.7) +
-  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+  geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+  scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
   labs(title = "Clusters - Complete Linkage", x = "Petal Length", y = "Petal Width") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right",
+        plot.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 11))
 grid.arrange(p_dend_complete, p_2d_complete, ncol = 2)
 
 # Average Linkage
@@ -98,12 +101,15 @@ plot_data_average <- iris_numerico %>%
   )
 p_2d_average <- ggplot(plot_data_average, aes(x = petal.length, y = petal.width, 
                                                color = cluster, shape = variety)) +
-  geom_point(size = 3, alpha = 0.7) +
-  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+  geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+  scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
   labs(title = "Clusters - Average Linkage", x = "Petal Length", y = "Petal Width") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right",
+        plot.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 11))
 grid.arrange(p_dend_average, p_2d_average, ncol = 2)
 
 # Single Linkage
@@ -120,12 +126,15 @@ plot_data_single <- iris_numerico %>%
   )
 p_2d_single <- ggplot(plot_data_single, aes(x = petal.length, y = petal.width, 
                                              color = cluster, shape = variety)) +
-  geom_point(size = 3, alpha = 0.7) +
-  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+  geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+  scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
   labs(title = "Clusters - Single Linkage", x = "Petal Length", y = "Petal Width") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right",
+        plot.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 11))
 grid.arrange(p_dend_single, p_2d_single, ncol = 2)
 
 # Ward's Method
@@ -142,12 +151,15 @@ plot_data_ward <- iris_numerico %>%
   )
 p_2d_ward <- ggplot(plot_data_ward, aes(x = petal.length, y = petal.width, 
                                          color = cluster, shape = variety)) +
-  geom_point(size = 3, alpha = 0.7) +
-  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+  geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+  scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
   labs(title = "Clusters - Ward's Method", x = "Petal Length", y = "Petal Width") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right",
+        plot.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 11))
 grid.arrange(p_dend_ward, p_2d_ward, ncol = 2)
 
 # ------------------------------------------------------------
@@ -176,12 +188,15 @@ plot_data_div <- iris_numerico %>%
   )
 p_2d_div <- ggplot(plot_data_div, aes(x = petal.length, y = petal.width, 
                                        color = cluster, shape = variety)) +
-  geom_point(size = 3, alpha = 0.7) +
-  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+  geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+  scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+  scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
   labs(title = "Clusters - Divisivo (DIANA)", x = "Petal Length", y = "Petal Width") +
   theme_bw() +
-  theme(legend.position = "right")
+  theme(legend.position = "right",
+        plot.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 11))
 grid.arrange(p_dend_div, p_2d_div, ncol = 2)
 
 # Comparar con clases reales
@@ -197,7 +212,8 @@ table(clusters_div, iris_data$variety)
 cat("\n\n=== PARTE 2: Comparación de Distancias y Métodos ===\n\n")
 
 # Definir diferentes métricas de distancia
-distancias <- c("euclidean", "manhattan", "maximum", "canberra", "minkowski")
+# Nota: "maximum" es la distancia de Chebyshev en R
+distancias <- c("euclidean", "manhattan", "maximum", "minkowski")
 
 # Métodos de enlace para aglomerativo (focus en average, single, complete)
 metodos_aglomerativo_comparacion <- c("complete", "average", "single")
@@ -287,12 +303,17 @@ for (distancia in distancias) {
         )
       p_2d <- ggplot(plot_data_temp, aes(x = petal.length, y = petal.width, 
                                          color = cluster, shape = variety)) +
-        geom_point(size = 3, alpha = 0.7) +
-        scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-        scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+        geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+        scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+        scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
         labs(title = paste("Clusters\n", titulo), x = "Petal Length", y = "Petal Width") +
         theme_bw() +
-        theme(legend.position = "right")
+        theme(legend.position = "right", 
+              plot.title = element_text(size = 11, face = "bold"),
+              axis.text = element_text(size = 9),
+              axis.title = element_text(size = 10),
+              legend.text = element_text(size = 8),
+              legend.title = element_text(size = 9))
       
       plots_dend[[metodo]] <- p_dend
       plots_2d[[metodo]] <- p_2d
@@ -321,12 +342,12 @@ for (distancia in distancias) {
       )
     p_2d <- ggplot(plot_data_temp, aes(x = petal.length, y = petal.width, 
                                        color = cluster, shape = variety)) +
-      geom_point(size = 3, alpha = 0.7) +
-      scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-      scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+      geom_point(size = 2.5, alpha = 0.8) +
+      scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+      scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
       labs(title = paste("Clusters\n", titulo), x = "Petal Length", y = "Petal Width") +
       theme_bw() +
-      theme(legend.position = "right")
+      theme(legend.position = "right", plot.title = element_text(size = 10))
     
     plots_dend[["divisivo"]] <- p_dend
     plots_2d[["divisivo"]] <- p_2d
@@ -334,14 +355,18 @@ for (distancia in distancias) {
   
   # Mostrar dendrogramas en una fila
   if (length(plots_dend) > 0) {
-    do.call(grid.arrange, c(plots_dend, ncol = length(plots_dend),
+    p_dend_final <- do.call(grid.arrange, c(plots_dend, ncol = length(plots_dend),
                             top = paste("Dendrogramas - Distancia:", distancia)))
+    print(p_dend_final)
   }
   
   # Mostrar plots 2D en una fila
   if (length(plots_2d) > 0) {
-    do.call(grid.arrange, c(plots_2d, ncol = length(plots_2d),
+    # Aumentar tamaño del dispositivo gráfico para mejor visualización
+    dev.new(width = length(plots_2d) * 5, height = 5)
+    p_2d_final <- do.call(grid.arrange, c(plots_2d, ncol = length(plots_2d),
                             top = paste("Clusters 2D - Distancia:", distancia)))
+    print(p_2d_final)
   }
 }
 
@@ -379,12 +404,17 @@ for (metodo in metodos_aglomerativo_comparacion) {
         )
       p_2d <- ggplot(plot_data_temp, aes(x = petal.length, y = petal.width, 
                                          color = cluster, shape = variety)) +
-        geom_point(size = 3, alpha = 0.7) +
-        scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-        scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+        geom_point(size = 3.5, alpha = 0.9, stroke = 0.5) +
+        scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+        scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
         labs(title = paste("Clusters\n", titulo), x = "Petal Length", y = "Petal Width") +
         theme_bw() +
-        theme(legend.position = "right")
+        theme(legend.position = "right", 
+              plot.title = element_text(size = 11, face = "bold"),
+              axis.text = element_text(size = 9),
+              axis.title = element_text(size = 10),
+              legend.text = element_text(size = 8),
+              legend.title = element_text(size = 9))
       
       plots_dend_metodo[[distancia]] <- p_dend
       plots_2d_metodo[[distancia]] <- p_2d
@@ -393,14 +423,19 @@ for (metodo in metodos_aglomerativo_comparacion) {
   
   # Mostrar dendrogramas
   if (length(plots_dend_metodo) > 0) {
-    do.call(grid.arrange, c(plots_dend_metodo, ncol = min(3, length(plots_dend_metodo)),
+    p_dend_final <- do.call(grid.arrange, c(plots_dend_metodo, ncol = min(3, length(plots_dend_metodo)),
                             top = paste("Dendrogramas - Método:", metodo)))
+    print(p_dend_final)
   }
   
   # Mostrar plots 2D
   if (length(plots_2d_metodo) > 0) {
-    do.call(grid.arrange, c(plots_2d_metodo, ncol = min(3, length(plots_2d_metodo)),
+    # Aumentar tamaño del dispositivo gráfico para mejor visualización
+    n_cols_plot <- min(3, length(plots_2d_metodo))
+    dev.new(width = n_cols_plot * 5, height = 5)
+    p_2d_final <- do.call(grid.arrange, c(plots_2d_metodo, ncol = n_cols_plot,
                             top = paste("Clusters 2D - Método:", metodo)))
+    print(p_2d_final)
   }
 }
 
@@ -427,12 +462,12 @@ for (distancia in c("euclidean", "manhattan")) {
         )
       p_2d <- ggplot(plot_data_temp, aes(x = petal.length, y = petal.width, 
                                          color = cluster, shape = variety)) +
-        geom_point(size = 3, alpha = 0.7) +
-        scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-        scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+        geom_point(size = 2.5, alpha = 0.8) +
+        scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+        scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
         labs(title = paste(distancia, "-", metodo), x = "Petal Length", y = "Petal Width") +
         theme_bw() +
-        theme(legend.position = "right")
+        theme(legend.position = "right", plot.title = element_text(size = 10))
       plots_comparacion[[metodo]] <- p_2d
     }
   }
@@ -448,19 +483,23 @@ for (distancia in c("euclidean", "manhattan")) {
       )
     p_2d <- ggplot(plot_data_temp, aes(x = petal.length, y = petal.width, 
                                        color = cluster, shape = variety)) +
-      geom_point(size = 3, alpha = 0.7) +
-      scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster") +
-      scale_shape_manual(values = c(16, 17, 18), name = "Variedad") +
+      geom_point(size = 2.5, alpha = 0.8) +
+      scale_color_manual(values = c("#2E9FDF", "#00AFBB", "#E7B800"), name = "Cluster", drop = FALSE) +
+      scale_shape_manual(values = c(16, 17, 18), name = "Variedad", drop = FALSE) +
       labs(title = paste(distancia, "- Divisivo"), x = "Petal Length", y = "Petal Width") +
       theme_bw() +
-      theme(legend.position = "right")
+      theme(legend.position = "right", plot.title = element_text(size = 10))
     plots_comparacion[["divisivo"]] <- p_2d
   }
   
   # Mostrar comparación
   if (length(plots_comparacion) > 0) {
-    do.call(grid.arrange, c(plots_comparacion, ncol = min(4, length(plots_comparacion)),
+    # Aumentar tamaño del dispositivo gráfico para mejor visualización
+    n_cols_plot <- min(4, length(plots_comparacion))
+    dev.new(width = n_cols_plot * 5, height = 5)
+    p_comparacion_final <- do.call(grid.arrange, c(plots_comparacion, ncol = n_cols_plot,
                             top = paste("Comparación Aglomerativo vs Divisivo - Distancia:", distancia)))
+    print(p_comparacion_final)
   }
 }
 
