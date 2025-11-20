@@ -353,18 +353,32 @@ for (distancia in distancias) {
     plots_2d[["divisivo"]] <- p_2d
   }
   
-  # Mostrar dendrogramas en una fila
+  # Mostrar dendrogramas en matriz 2x2
   if (length(plots_dend) > 0) {
-    p_dend_final <- do.call(grid.arrange, c(plots_dend, ncol = length(plots_dend),
+    # Asegurar que tenemos exactamente 4 plots (rellenar con NULL si es necesario)
+    plots_dend_4 <- plots_dend
+    while (length(plots_dend_4) < 4) {
+      plots_dend_4[[length(plots_dend_4) + 1]] <- NULL
+    }
+    plots_dend_4 <- plots_dend_4[1:4]  # Tomar solo los primeros 4
+    
+    dev.new(width = 12, height = 12)
+    p_dend_final <- do.call(grid.arrange, c(plots_dend_4, ncol = 2, nrow = 2,
                             top = paste("Dendrogramas - Distancia:", distancia)))
     print(p_dend_final)
   }
   
-  # Mostrar plots 2D en una fila
+  # Mostrar plots 2D en matriz 2x2
   if (length(plots_2d) > 0) {
-    # Aumentar tamaño del dispositivo gráfico para mejor visualización
-    dev.new(width = length(plots_2d) * 5, height = 5)
-    p_2d_final <- do.call(grid.arrange, c(plots_2d, ncol = length(plots_2d),
+    # Asegurar que tenemos exactamente 4 plots (rellenar con NULL si es necesario)
+    plots_2d_4 <- plots_2d
+    while (length(plots_2d_4) < 4) {
+      plots_2d_4[[length(plots_2d_4) + 1]] <- NULL
+    }
+    plots_2d_4 <- plots_2d_4[1:4]  # Tomar solo los primeros 4
+    
+    dev.new(width = 12, height = 12)
+    p_2d_final <- do.call(grid.arrange, c(plots_2d_4, ncol = 2, nrow = 2,
                             top = paste("Clusters 2D - Distancia:", distancia)))
     print(p_2d_final)
   }
@@ -421,19 +435,32 @@ for (metodo in metodos_aglomerativo_comparacion) {
     }
   }
   
-  # Mostrar dendrogramas
+  # Mostrar dendrogramas en matriz 2x2
   if (length(plots_dend_metodo) > 0) {
-    p_dend_final <- do.call(grid.arrange, c(plots_dend_metodo, ncol = min(3, length(plots_dend_metodo)),
+    # Asegurar que tenemos exactamente 4 plots (rellenar con NULL si es necesario)
+    plots_dend_4 <- plots_dend_metodo
+    while (length(plots_dend_4) < 4) {
+      plots_dend_4[[length(plots_dend_4) + 1]] <- NULL
+    }
+    plots_dend_4 <- plots_dend_4[1:4]  # Tomar solo los primeros 4
+    
+    dev.new(width = 12, height = 12)
+    p_dend_final <- do.call(grid.arrange, c(plots_dend_4, ncol = 2, nrow = 2,
                             top = paste("Dendrogramas - Método:", metodo)))
     print(p_dend_final)
   }
   
-  # Mostrar plots 2D
+  # Mostrar plots 2D en matriz 2x2
   if (length(plots_2d_metodo) > 0) {
-    # Aumentar tamaño del dispositivo gráfico para mejor visualización
-    n_cols_plot <- min(3, length(plots_2d_metodo))
-    dev.new(width = n_cols_plot * 5, height = 5)
-    p_2d_final <- do.call(grid.arrange, c(plots_2d_metodo, ncol = n_cols_plot,
+    # Asegurar que tenemos exactamente 4 plots (rellenar con NULL si es necesario)
+    plots_2d_4 <- plots_2d_metodo
+    while (length(plots_2d_4) < 4) {
+      plots_2d_4[[length(plots_2d_4) + 1]] <- NULL
+    }
+    plots_2d_4 <- plots_2d_4[1:4]  # Tomar solo los primeros 4
+    
+    dev.new(width = 12, height = 12)
+    p_2d_final <- do.call(grid.arrange, c(plots_2d_4, ncol = 2, nrow = 2,
                             top = paste("Clusters 2D - Método:", metodo)))
     print(p_2d_final)
   }
@@ -492,12 +519,17 @@ for (distancia in c("euclidean", "manhattan")) {
     plots_comparacion[["divisivo"]] <- p_2d
   }
   
-  # Mostrar comparación
+  # Mostrar comparación en matriz 2x2
   if (length(plots_comparacion) > 0) {
-    # Aumentar tamaño del dispositivo gráfico para mejor visualización
-    n_cols_plot <- min(4, length(plots_comparacion))
-    dev.new(width = n_cols_plot * 5, height = 5)
-    p_comparacion_final <- do.call(grid.arrange, c(plots_comparacion, ncol = n_cols_plot,
+    # Asegurar que tenemos exactamente 4 plots (rellenar con NULL si es necesario)
+    plots_comp_4 <- plots_comparacion
+    while (length(plots_comp_4) < 4) {
+      plots_comp_4[[length(plots_comp_4) + 1]] <- NULL
+    }
+    plots_comp_4 <- plots_comp_4[1:4]  # Tomar solo los primeros 4
+    
+    dev.new(width = 12, height = 12)
+    p_comparacion_final <- do.call(grid.arrange, c(plots_comp_4, ncol = 2, nrow = 2,
                             top = paste("Comparación Aglomerativo vs Divisivo - Distancia:", distancia)))
     print(p_comparacion_final)
   }
