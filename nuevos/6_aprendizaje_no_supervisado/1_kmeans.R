@@ -110,52 +110,6 @@ fviz_cluster(kmeans_result, data = iris_normalizado,
 # Matriz de confusión (comparando clusters con variedades reales)
 table(iris_clusters$cluster, iris_clusters$variety)
 
-# Calcular precisión del clustering
-# Nota: Los clusters pueden estar etiquetados de manera diferente
-# Necesitamos encontrar la mejor correspondencia
-cluster_labels <- iris_clusters$cluster
-true_labels <- as.numeric(iris_clusters$variety)
-
-# Función para calcular accuracy con mejor mapeo
-calcular_accuracy <- function(pred, true) {
-  # Crear tabla de contingencia
-  tabla <- table(pred, true)
-  
-  # Encontrar mejor mapeo usando algoritmo húngaro (aproximación simple)
-  # Para 3 clusters y 3 clases, probamos todas las permutaciones
-  permutaciones <- list(
-    c(1, 2, 3), c(1, 3, 2), c(2, 1, 3),
-    c(2, 3, 1), c(3, 1, 2), c(3, 2, 1)
-  )
-  
-  mejor_acc <- 0
-  mejor_perm <- NULL
-  
-  for (perm in permutaciones) {
-    pred_mapeado <- perm[pred]
-    acc <- sum(pred_mapeado == true) / length(true)
-    if (acc > mejor_acc) {
-      mejor_acc <- acc
-      mejor_perm <- perm
-    }
-  }
-  
-  return(list(accuracy = mejor_acc, permutacion = mejor_perm))
-}
-
-resultado_acc <- calcular_accuracy(cluster_labels, true_labels)
-print(paste("Accuracy del clustering:", round(resultado_acc$accuracy, 3)))
-print(paste("Mejor permutación:", paste(resultado_acc$permutacion, collapse = ", ")))
-
-# ------------------------------------------------------------
-# Análisis de silueta
-# ------------------------------------------------------------
-# Calcular silueta
-silueta <- silhouette(kmeans_result$cluster, dist(iris_normalizado))
-fviz_silhouette(silueta)
-
-# Resumen de la silueta
-summary(silueta)
 
 # ------------------------------------------------------------
 # Prueba con diferentes valores de k
@@ -168,13 +122,8 @@ for (k_val in k_values) {
   kmeans_temp <- kmeans(iris_normalizado, centers = k_val, nstart = 25)
   results_k[[k_val]] <- kmeans_temp
   
-  # Calcular métricas
-  silueta_temp <- silhouette(kmeans_temp$cluster, dist(iris_normalizado))
-  silueta_promedio <- mean(silueta_temp[, 3])
-  
   print(paste("k =", k_val, 
-              "| WCSS =", round(kmeans_temp$tot.withinss, 2),
-              "| Silueta promedio =", round(silueta_promedio, 3)))
+              "| WCSS =", round(kmeans_temp$tot.withinss, 2)))
 }
 
 # Visualizar comparación de diferentes valores de k

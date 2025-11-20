@@ -146,46 +146,6 @@ cat("\n--- Tabla de Contingencia: Clusters vs Variedades Reales ---\n")
 tabla_contingencia <- table(clusters, iris_data$variety)
 print(tabla_contingencia)
 
-# Calcular accuracy aproximada
-# Encontrar mejor mapeo entre clusters y variedades
-calcular_accuracy <- function(pred, true) {
-  tabla <- table(pred, true)
-  permutaciones <- list(
-    c(1, 2, 3), c(1, 3, 2), c(2, 1, 3),
-    c(2, 3, 1), c(3, 1, 2), c(3, 2, 1)
-  )
-  
-  mejor_acc <- 0
-  mejor_perm <- NULL
-  
-  for (perm in permutaciones) {
-    pred_mapeado <- perm[pred]
-    acc <- sum(pred_mapeado == true) / length(true)
-    if (acc > mejor_acc) {
-      mejor_acc <- acc
-      mejor_perm <- perm
-    }
-  }
-  
-  return(list(accuracy = mejor_acc, permutacion = mejor_perm))
-}
-
-cluster_labels <- clusters
-true_labels <- as.numeric(iris_data$variety)
-resultado_acc <- calcular_accuracy(cluster_labels, true_labels)
-
-cat("\n--- Métricas de Calidad ---\n")
-cat(paste("Accuracy aproximada:", round(resultado_acc$accuracy, 3), "\n"))
-cat(paste("Mejor permutación:", paste(resultado_acc$permutacion, collapse = ", "), "\n"))
-
-# Calcular silueta promedio
-dist_sil <- dist_matrix
-silueta <- silhouette(clusters, dist_sil)
-silueta_promedio <- mean(silueta[, 3])
-cat(paste("Silueta promedio:", round(silueta_promedio, 3), "\n"))
-
-# Visualizar silueta
-fviz_silhouette(silueta)
 
 cat("\n=== Análisis completado ===\n")
 
