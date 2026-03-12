@@ -8,3 +8,6 @@
 .DS_Store
 *_files/
 *.html
+
+__pycache__
+.ruff_cache
