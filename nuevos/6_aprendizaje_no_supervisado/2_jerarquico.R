@@ -98,8 +98,9 @@ titulo_dend <- paste("Dendrograma -",
                      "- Distancia:", distancia)
 
 p_dend <- fviz_dend(dendrograma, k = k,
-                    cex = 0.6,
+                    cex = 0.8,
                     k_colors = c("#2E9FDF", "#00AFBB", "#E7B800"),
+                    show_labels=FALSE,
                     color_labels_by_k = TRUE,
                     rect = TRUE,
                     main = titulo_dend)

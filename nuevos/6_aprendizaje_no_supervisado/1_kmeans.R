@@ -23,6 +23,7 @@ iris_data$variety <- as.factor(iris_data$variety)
 # Explorar estructura de los datos
 glimpse(iris_data)
 summary(iris_data)
+View(iris_data)
 
 # Seleccionar solo las variables numéricas para clustering
 iris_numerico <- iris_data %>%
@@ -30,6 +31,7 @@ iris_numerico <- iris_data %>%
 
 # Normalizar los datos (importante para K-means)
 iris_normalizado <- scale(iris_numerico)
+View(iris_normalizado)
 
 # ------------------------------------------------------------
 # Determinar número óptimo de clusters
@@ -50,6 +52,7 @@ fviz_nbclust(iris_normalizado, kmeans, method = "gap_stat", nboot = 50) +
 # Aplicar K-means con k=3 (sabemos que hay 3 especies)
 # ------------------------------------------------------------
 k <- 3
+help(kmeans)
 kmeans_result <- kmeans(iris_normalizado, centers = k, nstart = 25, iter.max = 100)
 
 # Ver información del modelo
@@ -80,7 +83,7 @@ iris_clusters <- iris_data %>%
 
 # Visualización 2D: Sepal Length vs Sepal Width
 p1 <- ggplot(iris_clusters, aes(x = sepal.length, y = sepal.width, 
-                                 color = cluster, shape = variety)) +
+                                 color = cluster)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "K-means Clusters: Sepal Length vs Sepal Width",
        x = "Sepal Length", y = "Sepal Width") +
@@ -88,7 +91,7 @@ p1 <- ggplot(iris_clusters, aes(x = sepal.length, y = sepal.width,
 
 # Visualización 2D: Petal Length vs Petal Width
 p2 <- ggplot(iris_clusters, aes(x = petal.length, y = petal.width, 
-                                 color = cluster, shape = variety)) +
+                                 color = cluster)) +
   geom_point(size = 3, alpha = 0.7) +
   labs(title = "K-means Clusters: Petal Length vs Petal Width",
        x = "Petal Length", y = "Petal Width") +
@@ -134,6 +137,4 @@ for (k_val in k_values) {
                                    main = paste("k =", k_val),
                                    ggtheme = theme_bw())
 }
-
-do.call(grid.arrange, c(plots_k, ncol = 2))
-
+plots_k
