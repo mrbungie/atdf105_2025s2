@@ -49,6 +49,11 @@ qqline(data$age, col = "red")
 set.seed(123)
 age_sample <- sample(data$age, size = min(5000, length(data$age)))
 shapiro.test(age_sample)
+# Shapiro: si el p-value es menor al threshold (comúnmente 0.05), se rechaza la normalidad,
+# indicando que la distribución de la variable se desvía significativamente de una distribución normal.
+# Sin embargo, en datasets grandes, incluso pequeñas desviaciones pueden 
+# resultar en un p-value significativo, por lo que es importante complementar con gráficos y 
+# medidas de asimetría y curtosis para obtener una comprensión más completa de la distribución de la variable.
 
 # 9) Datos atipicos (boxplot)
 ggplot(data, aes(y = age)) +
