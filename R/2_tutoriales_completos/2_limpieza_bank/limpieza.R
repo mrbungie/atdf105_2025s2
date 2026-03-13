@@ -114,6 +114,35 @@ data_duplicada %>% distinct(row_id, balance, .keep_all = TRUE)
 adultos <- data %>% filter(age < 70)
 adultos
 
+# 7b. Idea extra de limpieza 1: estandarizar textos categoricos
+# - quitar espacios al inicio/final
+# - pasar todo a minusculas para evitar categorias duplicadas por formato
+data <- data %>%
+  mutate(across(where(is.character), ~ str_to_lower(str_trim(.))))
+
+# 7c. Idea extra de limpieza 2: manejar categorias "unknown"
+# Las dejamos como NA para que no mezclen grupos reales con "desconocido"
+data <- data %>%
+  mutate(
+    job = na_if(job, "unknown"),
+    education = na_if(education, "unknown"),
+    contact = na_if(contact, "unknown"),
+    poutcome = na_if(poutcome, "unknown")
+  )
+
+# 7d. Reglas simples de validacion de rango
+# day debe estar entre 1 y 31
+# month debe estar entre 1 y 12
+data <- data %>%
+  mutate(
+    day = ifelse(day < 1 | day > 31, NA_real_, day),
+    month = ifelse(month < 1 | month > 12, NA_real_, month)
+  )
+
+# Recalcular adultos sobre la version final limpia
+adultos <- data %>% filter(age < 70)
+adultos
+
 # 8. Guardar
 write_csv(adultos, "bank_sin_senior.csv")
 write_csv(data, "bank_limpio.csv")
