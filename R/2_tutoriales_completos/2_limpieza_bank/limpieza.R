@@ -117,8 +117,9 @@ adultos
 # 7b. Idea extra de limpieza 1: estandarizar textos categoricos
 # - quitar espacios al inicio/final
 # - pasar todo a minusculas para evitar categorias duplicadas por formato
+# Nota: aqui aplicamos sobre factores para que tambien se limpien esas columnas
 data <- data %>%
-  mutate(across(where(is.character), ~ str_to_lower(str_trim(.))))
+  mutate(across(where(is.factor), ~ as.factor(str_to_lower(str_trim(as.character(.))))))
 
 # 7c. Idea extra de limpieza 2: manejar categorias "unknown"
 # Las dejamos como NA para que no mezclen grupos reales con "desconocido"

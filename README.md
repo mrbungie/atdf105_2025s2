@@ -1,4 +1,4 @@
-# Ejemplos del Curso
+# Data Mining UNAB (2025-2026) - Ejemplos y Tutoriales
 
 Este repositorio separa el material por lenguaje para facilitar la docencia:
 
