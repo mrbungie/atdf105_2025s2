@@ -5,26 +5,25 @@ library(tidyverse)
 library(skimr)
 library(ggplot2)
 
-data <- read_csv("adult.csv")
+data <- read_csv("adult.csv", na=c("","?"))
 
 head(data)
 
 # Characters a factores
 data$workclass <- as.factor(data$workclass)
-data$marital_status <- as.factor(data$marital_status)
+data$`marital-status` <- as.factor(data$`marital-status`)
 data$occupation <- as.factor(data$occupation)
 data$relationship <- as.factor(data$relationship)
 data$race <- as.factor(data$race)
-data$gender <- as.factor(data$gender)
-data$native_country <- as.factor(data$native_country)
-data$income_status <- as.factor(data$income_status)
+data$sex <- as.factor(data$sex)
+data$`native-country` <- as.factor(data$`native-country`)
+data$`income-status` <- as.factor(data$`income-status`)
 
 # Revision inicial de la data
 view(data)
 head(data)
 tail(data)
 
-describe(data)
 skim(data)
 
 # Solo juego previo a descriptiva (i.e. sin hipotesis)

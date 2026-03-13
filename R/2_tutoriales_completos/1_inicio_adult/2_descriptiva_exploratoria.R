@@ -1,5 +1,5 @@
 # Instalar paquetes
-# install.packages(c("tidyverse","skimr"))
+# install.packages(c("tidyverse","skimr","hexbin"))
 
 library(tidyverse)
 library(skimr)
@@ -10,15 +10,15 @@ data <- read_csv("adult.csv")
 
 head(data)
 
-# Characters a factores (siempre hacer esto cuando sepamos que son categorias)
+# Characters a factores
 data$workclass <- as.factor(data$workclass)
-data$marital_status <- as.factor(data$marital_status)
+data$`marital-status` <- as.factor(data$`marital-status`)
 data$occupation <- as.factor(data$occupation)
 data$relationship <- as.factor(data$relationship)
 data$race <- as.factor(data$race)
-data$gender <- as.factor(data$gender)
-data$native_country <- as.factor(data$native_country)
-data$income_status <- as.factor(data$income_status)
+data$sex <- as.factor(data$sex)
+data$`native-country` <- as.factor(data$`native-country`)
+data$`income-status` <- as.factor(data$`income-status`)
 
 # Documentación ggplot
 # https://www.epirhandbook.com/es/new_pages/ggplot_basics.es.html
@@ -34,7 +34,6 @@ view(data)
 head(data)
 tail(data)
 
-describe(data)
 skim(data)
 
 # factor × factor (Categorico vs Categorico)
@@ -73,7 +72,7 @@ ggplot(data, aes(x = income_status, y = age, fill = income_status)) +
   theme(legend.position = "none")
 
 # 2B) Violín con boxplot embebido (muestra forma + resumen)
-ggplot(data, aes(x = workclass, y = hours_per_week, fill = workclass)) +
+ggplot(data, aes(x = workclass, y = `hours-per-week`, fill = workclass)) +
   geom_violin(trim = FALSE, alpha = 0.7) +
   geom_boxplot(width = 0.12, outlier.shape = NA) +
   labs(title = "Horas trabajadas por semana según clase laboral",
@@ -91,14 +90,14 @@ ggplot(data, aes(x = age, fill = income_status)) +
 ## 🔹 3) Numérico × Numérico (relaciones entre dos variables numéricas)
 
 # 3A) Dispersión simple con recta de regresión
-ggplot(data, aes(x = age, y = capital)) +
+ggplot(data, aes(x = age, y = `capital-gain`)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = TRUE) +
   labs(title = "Capital vs Edad", x = "Edad", y = "Capital") +
   theme_minimal()
 
 # 3B) Dispersión coloreada por un factor (ej: ingresos)
-ggplot(data, aes(x = age, y = hours_per_week, color = income_status)) +
+ggplot(data, aes(x = age, y = `hours-per-week`, color = income_status)) +
   geom_point(alpha = 0.3) +
   geom_smooth(se = FALSE) +
   labs(title = "Horas/semana vs Edad por nivel de ingreso",
@@ -106,7 +105,7 @@ ggplot(data, aes(x = age, y = hours_per_week, color = income_status)) +
   theme_minimal()
 
 # 3C) Alta densidad: binning 2D (rectángulos)
-ggplot(data, aes(x = age, y = capital)) +
+ggplot(data, aes(x = age, y = `capital-gain`)) +
   geom_bin2d() +
   scale_fill_viridis_c() +
   labs(title = "Mapa de densidad 2D (binning rectangular)",
@@ -116,7 +115,7 @@ ggplot(data, aes(x = age, y = capital)) +
 # 3D) Alta densidad: hexbin (requiere librería hexbin)
 # install.packages("hexbin")
 library(hexbin)
-ggplot(data, aes(x = age, y = capital)) +
+ggplot(data, aes(x = age, y = `capital-gain`)) +
   geom_hex() +
   scale_fill_viridis_c() +
   labs(title = "Mapa de densidad hexagonal",
@@ -124,7 +123,7 @@ ggplot(data, aes(x = age, y = capital)) +
   theme_minimal()
 
 # 3E) Alta densidad: contornos de densidad (KDE 2D)
-ggplot(data, aes(x = age, y = capital)) +
+ggplot(data, aes(x = age, y = `capital-gain`)) +
   stat_density_2d(aes(fill = after_stat(level)), geom = "polygon", alpha = 0.7) +
   scale_fill_viridis_c() +
   labs(title = "Contornos de densidad 2D (KDE)",

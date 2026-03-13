@@ -1,17 +1,41 @@
 library(tidyverse)
 
 # Cargar datos
-data <- read_csv("adult.csv", show_col_types = FALSE)
+data <- read_csv("adult.csv", show_col_types = FALSE, na=c("","?"))
 
 # 1) Informacion basica del dataset
 nrow(data)
 ncol(data)
 names(data)
+
+# 1b) Tipos de datos
 glimpse(data)
+# chr: caracteres
+# dbl: double/numerico
+
+# NOTA: Ojo que no siempre los tipos de datos estan alineados con la esencia de la variable, 
+# por ejemplo, "education-num" es un entero pero representa un ordinal (nivel educativo como número con orden)
+# por lo que se podria convertir a factor (en R) o a categoria (en Python). Por esto es importante
+# revisar: 
+# 1) la documentacion del dataset si es que existe, y
+# 2) inspeccionar cada variable a detalle para entender su naturaleza y decidir el tipo de dato mas adecuado para cada una.
 
 # 2) Introduccion (codigo simple para revisar calidad inicial)
 head(data)
 summary(data)
+
+# 2b) Transformamos a los tipos correctos:
+# Characters a factores (factores = categorias en R)
+data$workclass <- as.factor(data$workclass)
+data$`marital-status` <- as.factor(data$`marital-status`)
+data$occupation <- as.factor(data$occupation)
+data$relationship <- as.factor(data$relationship)
+data$race <- as.factor(data$race)
+data$sex <- as.factor(data$sex)
+data$`native-country` <- as.factor(data$`native-country`)
+data$`income_status` <- as.factor(data$`income_status`)
+data$`education-num` <- as.factor(data$`education-num`)
+
 
 # 3) Objetivos del estudio (ejemplo: definir variables de trabajo)
 vars_categoricas <- data %>% select(where(is.character), where(is.factor)) %>% names()
@@ -71,6 +95,8 @@ ggplot(data, aes(x = income_status, y = age, fill = income_status)) +
 faltantes <- data %>%
   summarise(across(everything(), ~ mean(is.na(.)))) %>%
   pivot_longer(cols = everything(), names_to = "variable", values_to = "prop_na")
+faltantes$porcentaje <- faltantes$prop_na * 100
+faltantes$totales <- faltantes$prop_na * nrow(data)
 faltantes
 
 # 11b) Grafico de faltantes por columna
@@ -87,8 +113,10 @@ cor_mat <- data %>%
 round(cor_mat, 2)
 
 cor_df <- as.data.frame(as.table(cor_mat))
-ggplot(cor_df, aes(Var1, Var2, fill = Freq)) +
+cor_df %>%
+  filter(Var1 != Var2) %>%
+  ggplot(aes(Var1, Var2, fill = Freq)) +
   geom_tile() +
-  geom_text(aes(label = round(Freq, 2)), color = "white") +
+  geom_text(aes(label = round(Freq, 2)), color = "black") +
   scale_fill_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0) +
   theme_minimal()
