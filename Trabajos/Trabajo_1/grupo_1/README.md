@@ -15,13 +15,18 @@ Biologia marina y acuicultura. El dataset contiene medidas fisicas de abalones. 
 - https://es.wikipedia.org/wiki/Acuicultura
 - https://es.wikipedia.org/wiki/Regresion_lineal
 
-## Estructura del dataset
+## Sobre el dataset
 - Observaciones: 4177
 - Variables totales: 9
 - Variables numericas: 8
 - Variables categoricas: 1
-- Variable(s) objetivo reportada(s): Rings
+- Variable(s) objetivo reportada(s): Rings, anillos del abalone, que se relaciona con su edad
 - Tareas tipicas: Classification, Regression
+- Tarea comun: predecir la edad del abalone (Rings) a partir de sus medidas fisicas
+- Preguntas tipicas: 
+    - ¿Cuales son las medidas/caracteristicas más importantes para predecir la edad del abalone? 
+    - ¿Existen diferencias en las medidas fisicas entre machos, hembras e infantiles?
+    - ¿Cual es la distribucion de edades de los abalones en el dataset?
 
 ## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI

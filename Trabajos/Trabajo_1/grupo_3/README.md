@@ -15,13 +15,18 @@ Salud y apoyo al diagnostico medico. El dataset contiene medidas obtenidas de im
 - https://es.wikipedia.org/wiki/Diagnostico_medico
 - https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
 
-## Estructura del dataset
+## Sobre el dataset
 - Observaciones: 569
 - Variables totales: 31
 - Variables numericas: 30
 - Variables categoricas: 1
-- Variable(s) objetivo reportada(s): Diagnosis
+- Variable(s) objetivo reportada(s): Diagnosis, que indica si el tumor es benigno (B) o maligno (M)
 - Tareas tipicas: Classification
+- Tarea comun: predecir si un tumor es benigno o maligno a partir de las medidas obtenidas de las imagenes
+- Preguntas tipicas: 
+    - ¿Cuales son las medidas más importantes para predecir si un tumor es benigno o maligno? 
+    - ¿Existen diferencias en las medidas entre tumores benignos y malignos?
+    - ¿Cual es la distribucion de tumores benignos y malignos en el dataset?
 
 ## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI

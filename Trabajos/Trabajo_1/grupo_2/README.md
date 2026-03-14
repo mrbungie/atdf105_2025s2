@@ -15,13 +15,18 @@ Industria automotriz.  El dataset contiene caracteristicas tecnicas de vehiculos
 - https://es.wikipedia.org/wiki/Precio
 - https://es.wikipedia.org/wiki/Regresion_lineal
 
-## Estructura del dataset
+## Sobre el dataset
 - Observaciones: 205
 - Variables totales: 26
 - Variables numericas: 18
 - Variables categoricas: 8
-- Variable(s) objetivo reportada(s): symboling
+- Variable(s) objetivo reportada(s): symboling, que se relaciona con el riesgo de accidente del vehiculo
 - Tareas tipicas: Regression
+- Tarea comun: predecir el precio del vehiculo a partir de sus caracteristicas tecnicas
+- Preguntas tipicas: 
+    - ¿Cuales son las caracteristicas tecnicas más importantes para predecir el precio del vehiculo? 
+    - ¿Existen diferencias en el precio entre diferentes marcas o tipos de vehiculos?
+    - ¿Cual es la distribucion de precios de los vehiculos en el dataset?
 
 ## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI

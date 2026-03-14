@@ -17,13 +17,18 @@ Salud y gestion hospitalaria. El dataset contiene registros de pacientes diabeti
 - https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
 - https://es.wikipedia.org/wiki/An%C3%A1lisis_de_grupos
 
-## Estructura del dataset
+## Sobre el dataset
 - Observaciones: 101766
 - Variables totales: 48
 - Variables numericas: 11
 - Variables categoricas: 37
 - Variable(s) objetivo reportada(s): readmitted
 - Tareas tipicas: Classification, Clustering
+- Tarea comun: predecir si un paciente diabetico es readmitido al hospital a partir de sus caracteristicas clinicas y administrativas
+- Preguntas tipicas: 
+    - ¿Cuales son las caracteristicas clinicas y administrativas más importantes para predecir si un paciente diabetico es readmitido al hospital? 
+    - ¿Existen diferencias en las caracteristicas entre pacientes readmitidos y no readmitidos?
+    - ¿Cual es la distribucion de pacientes readmitidos y no readmitidos en el dataset?
 
 ## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI

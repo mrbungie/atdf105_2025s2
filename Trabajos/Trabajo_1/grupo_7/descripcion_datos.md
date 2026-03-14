@@ -1,30 +1,36 @@
-# Descripcion de datos: Estimation of Obesity Levels
+# Descripcion de datos: Online Shoppers Purchasing Intention Dataset
 
 ## Resumen tecnico
 - Grupo: grupo_7
-- Filas: 2111
-- Columnas: 17
-- Numericas detectadas: 8
-- Categoricas detectadas: 9
-- Faltantes totales en `obesity_levels.csv`: 0
+- Filas: 12330
+- Columnas: 18
+- Numericas detectadas: 14
+- Categoricas detectadas: 4
+- Faltantes totales en `online_shoppers_purchasing_intention.csv`: 0
+
+## Variables sugeridas para la pauta
+- Para histograma/densidad/normalidad: Administrative
+- Para barras categoricas: Month
+- Para boxplot numerica vs categorica: Administrative vs Month
 
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|
-| Gender | Feature | Categorical | no | N/D |
-| Age | Feature | Continuous | no | N/D |
-| Height | Feature | Continuous | no | N/D |
-| Weight | Feature | Continuous | no | N/D |
-| family_history_with_overweight | Feature | Binary | no | Has a family member suffered or suffers from overweight? |
-| FAVC | Feature | Binary | no | Do you eat high caloric food frequently? |
-| FCVC | Feature | Integer | no | Do you usually eat vegetables in your meals? |
-| NCP | Feature | Continuous | no | How many main meals do you have daily? |
-| CAEC | Feature | Categorical | no | Do you eat any food between meals? |
-| SMOKE | Feature | Binary | no | Do you smoke? |
-| CH2O | Feature | Continuous | no | How much water do you drink daily? |
-| SCC | Feature | Binary | no | Do you monitor the calories you eat daily? |
-| FAF | Feature | Continuous | no | How often do you have physical activity? |
-| TUE | Feature | Integer | no | How much time do you use technological devices such as cell phone, videogames, television, computer and others? |
-| CALC | Feature | Categorical | no | How often do you drink alcohol? |
-| MTRANS | Feature | Categorical | no | Which transportation do you usually use? |
-| NObeyesdad | Target | Categorical | no | Obesity level |
+| Administrative | Feature | Integer | no | N/D |
+| Administrative_Duration | Feature | Integer | no | N/D |
+| Informational | Feature | Integer | no | N/D |
+| Informational_Duration | Feature | Integer | no | N/D |
+| ProductRelated | Feature | Integer | no | N/D |
+| ProductRelated_Duration | Feature | Continuous | no | N/D |
+| BounceRates | Feature | Continuous | no | N/D |
+| ExitRates | Feature | Continuous | no | N/D |
+| PageValues | Feature | Integer | no | N/D |
+| SpecialDay | Feature | Integer | no | N/D |
+| Month | Feature | Categorical | no | N/D |
+| OperatingSystems | Feature | Integer | no | N/D |
+| Browser | Feature | Integer | no | N/D |
+| Region | Feature | Integer | no | N/D |
+| TrafficType | Feature | Integer | no | N/D |
+| VisitorType | Feature | Categorical | no | N/D |
+| Weekend | Feature | Binary | no | N/D |
+| Revenue | Target | Binary | no | N/D |
