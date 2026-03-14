@@ -1,0 +1,46 @@
+# Student Performance
+
+## Grupo asignado
+- grupo_8
+
+## Descripcion de dominio
+Educacion y analitica academica. Explora como factores sociales, familiares y escolares se vinculan con rendimiento estudiantil.
+
+## Fuente
+- UCI Machine Learning Repository (ID: 320)
+- Repositorio: https://archive.ics.uci.edu/dataset/320/student+performance
+
+## Contexto para profundizar (Wikipedia)
+- https://es.wikipedia.org/wiki/Rendimiento_academico
+- https://es.wikipedia.org/wiki/Educacion
+- https://es.wikipedia.org/wiki/Analitica_del_aprendizaje
+
+## Estructura del dataset
+- Observaciones: 649
+- Variables totales: 33
+- Variables numericas: 16
+- Variables categoricas: 17
+- Variable(s) objetivo reportada(s): G1, G2, G3
+- Tareas tipicas: Classification, Regression
+
+## Cobertura de la pauta de diapositivas
+- Graficos de barras (categoricas): SI
+- Tabla estadistica de numericas: SI
+- Histograma + densidad: SI
+- Q-Q plot + prueba de normalidad: SI
+- Boxplots (outliers y num-vs-cat): SI
+- Faltantes por columna: SI (aunque alguna columna puede tener 0 faltantes)
+- Matriz de correlacion: SI
+
+## Carga rapida en Python
+```python
+import pandas as pd
+df = pd.read_csv('student_performance.csv')
+print(df.shape)
+print(df.head())
+```
+
+## Archivos en esta carpeta
+- `student_performance.csv`
+- `README.md`
+- `descripcion_datos.md`
