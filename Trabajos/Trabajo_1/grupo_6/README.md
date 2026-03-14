@@ -23,7 +23,7 @@ Salud y gestion hospitalaria. El dataset contiene registros de pacientes diabeti
 - Variable(s) objetivo reportada(s): readmitted
 - Tareas tipicas: Classification, Clustering
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI
