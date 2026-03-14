@@ -13,7 +13,8 @@ Educacion y analitica academica. Explora como factores sociales, familiares y es
 ## Contexto para profundizar (Wikipedia)
 - https://es.wikipedia.org/wiki/Rendimiento_academico
 - https://es.wikipedia.org/wiki/Educacion
-- https://es.wikipedia.org/wiki/Analitica_del_aprendizaje
+- https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
+- https://es.wikipedia.org/wiki/Regresion_lineal
 
 ## Estructura del dataset
 - Observaciones: 649
@@ -23,13 +24,13 @@ Educacion y analitica academica. Explora como factores sociales, familiares y es
 - Variable(s) objetivo reportada(s): G1, G2, G3
 - Tareas tipicas: Classification, Regression
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI
 - Q-Q plot + prueba de normalidad: SI
 - Boxplots (outliers y num-vs-cat): SI
-- Faltantes por columna: SI (aunque alguna columna puede tener 0 faltantes)
+- Faltantes por columna: SI (aunque tiene 0 faltantes)
 - Matriz de correlacion: SI
 
 ## Carga rapida en Python

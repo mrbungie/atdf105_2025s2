@@ -13,7 +13,7 @@ Industria automotriz. Permite analizar relacion entre caracteristicas tecnicas d
 ## Contexto para profundizar (Wikipedia)
 - https://es.wikipedia.org/wiki/Industria_automotriz
 - https://es.wikipedia.org/wiki/Precio
-- https://es.wikipedia.org/wiki/Analisis_de_regresion
+- https://es.wikipedia.org/wiki/Regresion_lineal
 
 ## Estructura del dataset
 - Observaciones: 205
@@ -23,7 +23,7 @@ Industria automotriz. Permite analizar relacion entre caracteristicas tecnicas d
 - Variable(s) objetivo reportada(s): symboling
 - Tareas tipicas: Regression
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI

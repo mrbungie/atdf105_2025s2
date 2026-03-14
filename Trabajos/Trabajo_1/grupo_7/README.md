@@ -14,6 +14,9 @@ Salud publica, nutricion y habitos de vida. Relaciona comportamiento alimentario
 - https://es.wikipedia.org/wiki/Obesidad
 - https://es.wikipedia.org/wiki/Nutricion
 - https://es.wikipedia.org/wiki/Actividad_fisica
+- https://es.wikipedia.org/wiki/Regresion_lineal
+- https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
+- https://es.wikipedia.org/wiki/An%C3%A1lisis_de_grupos
 
 ## Estructura del dataset
 - Observaciones: 2111
@@ -23,7 +26,7 @@ Salud publica, nutricion y habitos de vida. Relaciona comportamiento alimentario
 - Variable(s) objetivo reportada(s): NObeyesdad
 - Tareas tipicas: Classification, Regression, Clustering
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI

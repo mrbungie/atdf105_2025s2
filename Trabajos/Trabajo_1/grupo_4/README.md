@@ -13,7 +13,7 @@ Riesgo crediticio y decisiones financieras. Se estudian variables de solicitante
 ## Contexto para profundizar (Wikipedia)
 - https://es.wikipedia.org/wiki/Riesgo_crediticio
 - https://es.wikipedia.org/wiki/Puntaje_de_credito
-- https://es.wikipedia.org/wiki/Clasificacion_binaria
+- https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
 
 ## Estructura del dataset
 - Observaciones: 690
@@ -23,7 +23,7 @@ Riesgo crediticio y decisiones financieras. Se estudian variables de solicitante
 - Variable(s) objetivo reportada(s): A16
 - Tareas tipicas: Classification
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI

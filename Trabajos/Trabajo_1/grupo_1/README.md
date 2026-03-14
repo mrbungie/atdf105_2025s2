@@ -23,13 +23,13 @@ Biologia marina y acuicultura. El objetivo habitual es estimar la edad de abalon
 - Variable(s) objetivo reportada(s): Rings
 - Tareas tipicas: Classification, Regression
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI
 - Q-Q plot + prueba de normalidad: SI
 - Boxplots (outliers y num-vs-cat): SI
-- Faltantes por columna: SI (aunque alguna columna puede tener 0 faltantes)
+- Faltantes por columna: SI (no tiene faltantes, pero se puede mostrar la tabla de conteo de faltantes por columna)
 - Matriz de correlacion: SI
 
 ## Carga rapida en Python

@@ -1,27 +1,27 @@
-# Census Income
+# Diabetes 130-US Hospitals for Years 1999-2008
 
 ## Grupo asignado
 - grupo_6
 
 ## Descripcion de dominio
-Socioeconomia y mercado laboral. Permite estudiar factores demograficos y laborales asociados al nivel de ingreso.
+Salud y gestion hospitalaria. El dataset contiene registros de pacientes diabeticos en hospitales de EE.UU. y permite estudiar factores clinicos y administrativos asociados a resultados de atencion y readmision.
 
 ## Fuente
-- UCI Machine Learning Repository (ID: 20)
-- Repositorio: https://archive.ics.uci.edu/dataset/20/census+income
+- UCI Machine Learning Repository (ID: 296)
+- Repositorio: https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
 ## Contexto para profundizar (Wikipedia)
-- https://es.wikipedia.org/wiki/Censo
-- https://es.wikipedia.org/wiki/Ingreso
-- https://es.wikipedia.org/wiki/Demografia
+- https://es.wikipedia.org/wiki/Diabetes_mellitus
+- https://es.wikipedia.org/wiki/Hospital
+- https://es.wikipedia.org/wiki/Reingreso_hospitalario
 
 ## Estructura del dataset
-- Observaciones: 48842
-- Variables totales: 15
-- Variables numericas: 6
-- Variables categoricas: 9
-- Variable(s) objetivo reportada(s): income
-- Tareas tipicas: Classification
+- Observaciones: 101766
+- Variables totales: 48
+- Variables numericas: 11
+- Variables categoricas: 37
+- Variable(s) objetivo reportada(s): readmitted
+- Tareas tipicas: Classification, Clustering
 
 ## Cobertura de la pauta de diapositivas
 - Graficos de barras (categoricas): SI
@@ -35,12 +35,12 @@ Socioeconomia y mercado laboral. Permite estudiar factores demograficos y labora
 ## Carga rapida en Python
 ```python
 import pandas as pd
-df = pd.read_csv('census_income.csv')
+df = pd.read_csv('diabetes_hospitals.csv')
 print(df.shape)
 print(df.head())
 ```
 
 ## Archivos en esta carpeta
-- `census_income.csv`
+- `diabetes_hospitals.csv`
 - `README.md`
 - `descripcion_datos.md`

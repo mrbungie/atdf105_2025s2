@@ -13,7 +13,7 @@ Banca y scoring de credito. Analiza perfiles de clientes para predecir calidad d
 ## Contexto para profundizar (Wikipedia)
 - https://es.wikipedia.org/wiki/Credito_(economia)
 - https://es.wikipedia.org/wiki/Banco
-- https://es.wikipedia.org/wiki/Modelo_predictivo
+- https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
 
 ## Estructura del dataset
 - Observaciones: 1000
@@ -23,13 +23,13 @@ Banca y scoring de credito. Analiza perfiles de clientes para predecir calidad d
 - Variable(s) objetivo reportada(s): class
 - Tareas tipicas: Classification
 
-## Cobertura de la pauta de diapositivas
+## Cobertura de la pauta de diapositivas (i.e. pueden realizarse con este dataset)
 - Graficos de barras (categoricas): SI
 - Tabla estadistica de numericas: SI
 - Histograma + densidad: SI
 - Q-Q plot + prueba de normalidad: SI
 - Boxplots (outliers y num-vs-cat): SI
-- Faltantes por columna: SI (aunque alguna columna puede tener 0 faltantes)
+- Faltantes por columna: SI (no tiene faltantes, pero se puede mostrar la tabla de conteo de faltantes por columna)
 - Matriz de correlacion: SI
 
 ## Carga rapida en Python

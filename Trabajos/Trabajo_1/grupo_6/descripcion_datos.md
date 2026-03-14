@@ -1,33 +1,66 @@
-# Descripcion de datos: Census Income
+# Descripcion de datos: Diabetes 130-US Hospitals for Years 1999-2008
 
 ## Resumen tecnico
 - Grupo: grupo_6
-- Filas: 48842
-- Columnas: 15
-- Numericas detectadas: 6
-- Categoricas detectadas: 9
-- Faltantes totales en `census_income.csv`: 2203
+- Filas: 101766
+- Columnas: 48
+- Numericas detectadas: 11
+- Categoricas detectadas: 37
+- Faltantes totales en `diabetes_hospitals.csv`: 374017
 
 ## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: age
-- Para barras categoricas: workclass
-- Para boxplot numerica vs categorica: age vs workclass
+- Para histograma/densidad/normalidad: admission_type_id
+- Para barras categoricas: race
+- Para boxplot numerica vs categorica: admission_type_id vs race
 
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|
-| age | Feature | Integer | no | N/A |
-| workclass | Feature | Categorical | yes | Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked. |
-| fnlwgt | Feature | Integer | no | N/D |
-| education | Feature | Categorical | no |  Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool. |
-| education-num | Feature | Integer | no | N/D |
-| marital-status | Feature | Categorical | no | Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse. |
-| occupation | Feature | Categorical | yes | Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces. |
-| relationship | Feature | Categorical | no | Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried. |
-| race | Feature | Categorical | no | White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black. |
-| sex | Feature | Binary | no | Female, Male. |
-| capital-gain | Feature | Integer | no | N/D |
-| capital-loss | Feature | Integer | no | N/D |
-| hours-per-week | Feature | Integer | no | N/D |
-| native-country | Feature | Categorical | yes | United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands. |
-| income | Target | Binary | no | >50K, <=50K. |
+| race | Feature | Categorical | yes | Values: Caucasian, Asian, African American, Hispanic, and other |
+| gender | Feature | Categorical | no | Values: male, female, and unknown/invalid |
+| age | Feature | Categorical | no | Grouped in 10-year intervals: [0, 10), [10, 20),..., [90, 100) |
+| weight | Feature | Categorical | yes | Weight in pounds. |
+| admission_type_id | Feature | Categorical | no | Integer identifier corresponding to 9 distinct values, for example, emergency, urgent, elective, newborn, and not available |
+| discharge_disposition_id | Feature | Categorical | no | Integer identifier corresponding to 29 distinct values, for example, discharged to home, expired, and not available |
+| admission_source_id | Feature | Categorical | no | Integer identifier corresponding to 21 distinct values, for example, physician referral, emergency room, and transfer from a hospital |
+| time_in_hospital | Feature | Integer | no | Integer number of days between admission and discharge |
+| payer_code | Feature | Categorical | yes | Integer identifier corresponding to 23 distinct values, for example, Blue Cross/Blue Shield, Medicare, and self-pay |
+| medical_specialty | Feature | Categorical | yes | Integer identifier of a specialty of the admitting physician, corresponding to 84 distinct values, for example, cardiology, internal medicine, family/general practice, and surgeon |
+| num_lab_procedures | Feature | Integer | no | Number of lab tests performed during the encounter |
+| num_procedures | Feature | Integer | no | Number of procedures (other than lab tests) performed during the encounter |
+| num_medications | Feature | Integer | no | Number of distinct generic names administered during the encounter |
+| number_outpatient | Feature | Integer | no | Number of outpatient visits of the patient in the year preceding the encounter |
+| number_emergency | Feature | Integer | no | Number of emergency visits of the patient in the year preceding the encounter |
+| number_inpatient | Feature | Integer | no | Number of inpatient visits of the patient in the year preceding the encounter |
+| diag_1 | Feature | Categorical | yes | The primary diagnosis (coded as first three digits of ICD9); 848 distinct values |
+| diag_2 | Feature | Categorical | yes | Secondary diagnosis (coded as first three digits of ICD9); 923 distinct values |
+| diag_3 | Feature | Categorical | yes | Additional secondary diagnosis (coded as first three digits of ICD9); 954 distinct values |
+| number_diagnoses | Feature | Integer | no | Number of diagnoses entered to the system |
+| max_glu_serum | Feature | Categorical | no | Indicates the range of the result or if the test was not taken. Values: >200, >300, normal, and none if not measured |
+| A1Cresult | Feature | Categorical | no | Indicates the range of the result or if the test was not taken. Values: >8 if the result was greater than 8%, >7 if the result was greater than 7% but less than 8%, normal if the result was less than 7%, and none if not measured. |
+| metformin | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| repaglinide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| nateglinide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| chlorpropamide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| glimepiride | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| acetohexamide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| glipizide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| glyburide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| tolbutamide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| pioglitazone | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| rosiglitazone | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| acarbose | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| miglitol | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| troglitazone | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| tolazamide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| examide | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| citoglipton | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| insulin | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| glyburide-metformin | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| glipizide-metformin | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| glimepiride-pioglitazone | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| metformin-rosiglitazone | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| metformin-pioglitazone | Feature | Categorical | no | The feature indicates whether the drug was prescribed or there was a change in the dosage. Values: up if the dosage was increased during the encounter, down if the dosage was decreased, steady if the dosage did not change, and no if the drug was not prescribed |
+| change | Feature | Categorical | no | Indicates if there was a change in diabetic medications (either dosage or generic name). Values: change and no change |
+| diabetesMed | Feature | Categorical | no | Indicates if there was any diabetic medication prescribed. Values: yes and no |
+| readmitted | Target | Categorical | no | Days to inpatient readmission. Values: <30 if the patient was readmitted in less than 30 days, >30 if the patient was readmitted in more than 30 days, and No for no record of readmission. |
