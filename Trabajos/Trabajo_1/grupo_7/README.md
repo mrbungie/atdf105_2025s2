@@ -4,7 +4,7 @@
 - grupo_7
 
 ## Descripcion de dominio
-Salud publica, nutricion y habitos de vida. Relaciona comportamiento alimentario y actividad fisica con niveles de obesidad.
+Salud publica, nutricion y habitos de vida. El dataset contiene informacion sobre comportamiento alimentario y actividad fisica, y su relacion con los niveles de obesidad.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 544)

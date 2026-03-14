@@ -4,7 +4,7 @@
 - grupo_3
 
 ## Descripcion de dominio
-Salud y apoyo al diagnostico medico. Se usan medidas obtenidas de imagenes para clasificar tumores en benignos o malignos.
+Salud y apoyo al diagnostico medico. El dataset contiene medidas obtenidas de imagenes para clasificar tumores en benignos o malignos.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 17)

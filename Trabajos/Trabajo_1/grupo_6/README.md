@@ -14,6 +14,8 @@ Salud y gestion hospitalaria. El dataset contiene registros de pacientes diabeti
 - https://es.wikipedia.org/wiki/Diabetes_mellitus
 - https://es.wikipedia.org/wiki/Hospital
 - https://es.wikipedia.org/wiki/Reingreso_hospitalario
+- https://es.wikipedia.org/wiki/Clasificaci%C3%B3n_estad%C3%ADstica
+- https://es.wikipedia.org/wiki/An%C3%A1lisis_de_grupos
 
 ## Estructura del dataset
 - Observaciones: 101766

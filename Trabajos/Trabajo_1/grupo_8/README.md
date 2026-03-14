@@ -4,7 +4,7 @@
 - grupo_8
 
 ## Descripcion de dominio
-Educacion y analitica academica. Explora como factores sociales, familiares y escolares se vinculan con rendimiento estudiantil.
+Educacion y analitica academica. El dataset contiene informacion sobre factores sociales, familiares y escolares, y su relacion con el rendimiento estudiantil.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 320)

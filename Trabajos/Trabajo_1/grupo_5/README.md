@@ -4,7 +4,7 @@
 - grupo_5
 
 ## Descripcion de dominio
-Banca y scoring de credito. Analiza perfiles de clientes para predecir calidad del credito.
+Banca y scoring de credito. El dataset contiene informacion sobre perfiles de clientes para predecir la calidad del credito.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 144)

@@ -4,7 +4,7 @@
 - grupo_2
 
 ## Descripcion de dominio
-Industria automotriz. Permite analizar relacion entre caracteristicas tecnicas del vehiculo y su precio de mercado.
+Industria automotriz.  El dataset contiene caracteristicas tecnicas de vehiculos. Permite analizar relacion entre estas caracteristicas y su precio de mercado.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 10)

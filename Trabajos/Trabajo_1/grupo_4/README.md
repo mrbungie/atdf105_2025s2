@@ -4,7 +4,7 @@
 - grupo_4
 
 ## Descripcion de dominio
-Riesgo crediticio y decisiones financieras. Se estudian variables de solicitantes para aprobar o rechazar credito.
+Riesgo crediticio y decisiones financieras. El dataset contiene variables de solicitantes para aprobar o rechazar credito.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 27)

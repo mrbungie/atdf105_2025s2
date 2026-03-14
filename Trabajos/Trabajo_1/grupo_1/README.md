@@ -4,7 +4,7 @@
 - grupo_1
 
 ## Descripcion de dominio
-Biologia marina y acuicultura. El objetivo habitual es estimar la edad de abalones a partir de medidas fisicas.
+Biologia marina y acuicultura. El dataset contiene medidas fisicas de abalones. El objetivo habitual es estimar la edad de abalones a partir de estas medidas.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 1)
