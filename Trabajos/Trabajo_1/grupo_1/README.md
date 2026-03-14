@@ -40,6 +40,14 @@ print(df.shape)
 print(df.head())
 ```
 
+## Carga rapida en R
+```R
+library(tidyverse)
+df <- read_csv('abalone.csv')
+print(dim(df))
+print(head(df))
+```
+
 ## Archivos en esta carpeta
 - `abalone.csv`
 - `README.md`

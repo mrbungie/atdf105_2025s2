@@ -43,6 +43,14 @@ print(df.shape)
 print(df.head())
 ```
 
+## Carga rapida en R
+```R
+library(tidyverse)
+df <- read_csv('obesity_levels.csv')
+print(dim(df))
+print(head(df))
+```
+
 ## Archivos en esta carpeta
 - `obesity_levels.csv`
 - `README.md`

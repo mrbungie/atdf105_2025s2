@@ -41,6 +41,14 @@ print(df.shape)
 print(df.head())
 ```
 
+## Carga rapida en R
+```R
+library(tidyverse)
+df <- read_csv('student_performance.csv')
+print(dim(df))
+print(head(df))
+```
+
 ## Archivos en esta carpeta
 - `student_performance.csv`
 - `README.md`

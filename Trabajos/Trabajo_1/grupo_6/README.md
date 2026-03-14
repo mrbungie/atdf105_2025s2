@@ -42,6 +42,14 @@ print(df.shape)
 print(df.head())
 ```
 
+## Carga rapida en R
+```R
+library(tidyverse)
+df <- read_csv('diabetes_hospitals.csv')
+print(dim(df))
+print(head(df))
+```
+
 ## Archivos en esta carpeta
 - `diabetes_hospitals.csv`
 - `README.md`
