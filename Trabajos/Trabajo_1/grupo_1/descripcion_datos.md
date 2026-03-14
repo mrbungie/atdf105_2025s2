@@ -8,11 +8,6 @@
 - Categoricas detectadas: 1
 - Faltantes totales en `abalone.csv`: 0
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: Length
-- Para barras categoricas: Sex
-- Para boxplot numerica vs categorica: Length vs Sex
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

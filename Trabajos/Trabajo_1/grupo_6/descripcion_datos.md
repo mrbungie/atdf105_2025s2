@@ -8,11 +8,6 @@
 - Categoricas detectadas: 37
 - Faltantes totales en `diabetes_hospitals.csv`: 374017
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: admission_type_id
-- Para barras categoricas: race
-- Para boxplot numerica vs categorica: admission_type_id vs race
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

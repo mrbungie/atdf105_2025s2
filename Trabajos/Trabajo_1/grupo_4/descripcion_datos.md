@@ -8,11 +8,6 @@
 - Categoricas detectadas: 10
 - Faltantes totales en `credit_approval.csv`: 67
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: A15
-- Para barras categoricas: A13
-- Para boxplot numerica vs categorica: A15 vs A13
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

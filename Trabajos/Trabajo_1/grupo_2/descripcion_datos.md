@@ -8,11 +8,6 @@
 - Categoricas detectadas: 8
 - Faltantes totales en `automobile.csv`: 59
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: price
-- Para barras categoricas: fuel-system
-- Para boxplot numerica vs categorica: price vs fuel-system
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

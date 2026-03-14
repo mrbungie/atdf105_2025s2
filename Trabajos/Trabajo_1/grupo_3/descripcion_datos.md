@@ -8,11 +8,6 @@
 - Categoricas detectadas: 1
 - Faltantes totales en `breast_cancer_wisconsin_diagnostic.csv`: 0
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: radius1
-- Para barras categoricas: Diagnosis
-- Para boxplot numerica vs categorica: radius1 vs Diagnosis
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

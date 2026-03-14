@@ -8,11 +8,6 @@
 - Categoricas detectadas: 9
 - Faltantes totales en `obesity_levels.csv`: 0
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: Age
-- Para barras categoricas: Gender
-- Para boxplot numerica vs categorica: Age vs Gender
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

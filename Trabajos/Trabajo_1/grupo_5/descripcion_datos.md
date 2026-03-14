@@ -8,11 +8,6 @@
 - Categoricas detectadas: 13
 - Faltantes totales en `german_credit.csv`: 0
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: Attribute2
-- Para barras categoricas: Attribute1
-- Para boxplot numerica vs categorica: Attribute2 vs Attribute1
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|

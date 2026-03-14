@@ -8,11 +8,6 @@
 - Categoricas detectadas: 17
 - Faltantes totales en `student_performance.csv`: 0
 
-## Variables sugeridas para la pauta
-- Para histograma/densidad/normalidad: age
-- Para barras categoricas: school
-- Para boxplot numerica vs categorica: age vs school
-
 ## Diccionario de variables
 | Variable | Rol | Tipo | Missing reportado | Descripcion |
 |---|---|---|---|---|
