@@ -20,7 +20,7 @@ Industria automotriz.  El dataset contiene caracteristicas tecnicas de vehiculos
 - Variables totales: 26
 - Variables numericas: 18
 - Variables categoricas: 8
-- Variable(s) objetivo reportada(s): symboling, que se relaciona con el riesgo de accidente del vehiculo
+- Variable(s) objetivo reportada(s): symboling, que se relaciona con el riesgo de accidente del vehiculo (-3 a 3, donde -3 es el menos riesgoso y 3 el más riesgoso)
 - Tareas tipicas: Regression
 - Tarea comun: predecir el precio del vehiculo a partir de sus caracteristicas tecnicas
 - Preguntas tipicas: 

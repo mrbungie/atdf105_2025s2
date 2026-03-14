@@ -21,7 +21,7 @@ Educacion y analitica academica. El dataset contiene informacion sobre factores 
 - Variables totales: 33
 - Variables numericas: 16
 - Variables categoricas: 17
-- Variable(s) objetivo reportada(s): G1, G2, G3
+- Variable(s) objetivo reportada(s): G1, G2, G3, que representan las notas del estudiante en tres periodos diferentes, y se pueden usar para evaluar su rendimiento academico
 - Tareas tipicas: Classification, Regression
 - Tarea comun: predecir el rendimiento academico de un estudiante (G1, G2, G3) a partir de factores sociales, familiares y escolares
 - Preguntas tipicas: 

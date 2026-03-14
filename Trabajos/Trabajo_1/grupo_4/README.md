@@ -22,7 +22,7 @@ NOTA: Este dataset ha sido anonimizado y las variables se nombran como A1, A2, .
 - Variables totales: 16
 - Variables numericas: 6
 - Variables categoricas: 10
-- Variable(s) objetivo reportada(s): A16
+- Variable(s) objetivo reportada(s): A16, que indica si se aprueba (+) o rechaza (-) un credito
 - Tareas tipicas: Classification
 - Tarea comun: predecir si se aprueba o rechaza un credito a partir de las caracteristicas del solicitante
 - Preguntas tipicas: 

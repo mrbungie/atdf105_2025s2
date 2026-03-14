@@ -22,7 +22,7 @@ Salud y gestion hospitalaria. El dataset contiene registros de pacientes diabeti
 - Variables totales: 48
 - Variables numericas: 11
 - Variables categoricas: 37
-- Variable(s) objetivo reportada(s): readmitted
+- Variable(s) objetivo reportada(s): readmitted, que indica si un paciente diabetico es readmitido al hospital dentro de los 30 dias siguientes a su alta, después de 30 dias, o no es readmitido
 - Tareas tipicas: Classification, Clustering
 - Tarea comun: predecir si un paciente diabetico es readmitido al hospital a partir de sus caracteristicas clinicas y administrativas
 - Preguntas tipicas: 
