@@ -4,7 +4,7 @@
 - grupo_9
 
 ## Descripcion de dominio
-Marketing bancario y analitica comercial. El dataset registra informacion de clientes y contactos de campanas para estudiar la suscripcion a depositos a plazo.
+Marketing bancario y analitica comercial. El dataset registra informacion de clientes y contactos de campañas para estudiar la suscripcion a depositos a plazo.
 
 ## Fuente
 - UCI Machine Learning Repository (ID: 222)
