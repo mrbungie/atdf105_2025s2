@@ -3,13 +3,14 @@
 # ============================================================
 
 # Instalar paquetes necesarios (ejecutar solo una vez)
-# install.packages(c("tidyverse", "factoextra", "cluster", "gridExtra"))
+# install.packages(c("tidyverse", "factoextra", "cluster", "gridExtra", "mclust"))
 
 # Cargar librerías necesarias
 library(tidyverse)
 library(factoextra)
 library(cluster)
 library(gridExtra)
+library(mclust)
 
 # Establecer semilla para reproducibilidad
 set.seed(42)
@@ -36,17 +37,92 @@ View(iris_normalizado)
 # ------------------------------------------------------------
 # Determinar número óptimo de clusters
 # ------------------------------------------------------------
-# Método del codo (Elbow Method)
-fviz_nbclust(iris_normalizado, kmeans, method = "wss") +
-  labs(title = "Método del Codo (Elbow Method)")
+# El alumno puede elegir qué métricas revisar de una lista más amplia.
+metricas_disponibles <- c("wss", "silhouette", "gap_stat", "calinski_harabasz", "davies_bouldin", "adjusted_rand_index")
+metricas_seleccionadas <- c("wss", "silhouette", "calinski_harabasz", "davies_bouldin")
+stopifnot(all(metricas_seleccionadas %in% metricas_disponibles))
 
-# Método de la silueta (Silhouette Method)
-fviz_nbclust(iris_normalizado, kmeans, method = "silhouette") +
-  labs(title = "Método de la Silueta")
+# Las tres primeras métricas ya tienen soporte directo en factoextra.
+if ("wss" %in% metricas_seleccionadas) {
+  fviz_nbclust(iris_normalizado, kmeans, method = "wss") +
+    labs(title = "Método del Codo (Elbow Method)")
+}
 
-# Método gap statistic
-fviz_nbclust(iris_normalizado, kmeans, method = "gap_stat", nboot = 50) +
-  labs(title = "Gap Statistic Method")
+if ("silhouette" %in% metricas_seleccionadas) {
+  fviz_nbclust(iris_normalizado, kmeans, method = "silhouette") +
+    labs(title = "Método de la Silueta")
+}
+
+if ("gap_stat" %in% metricas_seleccionadas) {
+  fviz_nbclust(iris_normalizado, kmeans, method = "gap_stat", nboot = 50) +
+    labs(title = "Gap Statistic Method")
+}
+
+# Para el resto calculamos métricas manualmente sobre varios valores de k.
+calinski_harabasz <- function(x, clusters) {
+  x <- as.matrix(x)
+  clusters <- as.factor(clusters)
+  n <- nrow(x)
+  k <- nlevels(clusters)
+  global_center <- colMeans(x)
+  centers <- rowsum(x, clusters) / as.vector(table(clusters))
+  wss <- 0
+  bss <- 0
+
+  for (cluster_id in levels(clusters)) {
+    puntos <- x[clusters == cluster_id, , drop = FALSE]
+    centro <- centers[cluster_id, ]
+    wss <- wss + sum(rowSums((puntos - matrix(centro, nrow = nrow(puntos), ncol = ncol(x), byrow = TRUE))^2))
+    bss <- bss + nrow(puntos) * sum((centro - global_center)^2)
+  }
+
+  (bss / (k - 1)) / (wss / (n - k))
+}
+
+davies_bouldin <- function(x, clusters) {
+  x <- as.matrix(x)
+  clusters <- as.factor(clusters)
+  centers <- rowsum(x, clusters) / as.vector(table(clusters))
+  scatter <- sapply(levels(clusters), function(cluster_id) {
+    puntos <- x[clusters == cluster_id, , drop = FALSE]
+    centro <- centers[cluster_id, ]
+    mean(sqrt(rowSums((puntos - matrix(centro, nrow = nrow(puntos), ncol = ncol(x), byrow = TRUE))^2)))
+  })
+
+  db_vals <- sapply(seq_along(levels(clusters)), function(i) {
+    max(sapply(seq_along(levels(clusters)), function(j) {
+      if (i == j) return(NA_real_)
+      dist_centros <- sqrt(sum((centers[i, ] - centers[j, ])^2))
+      (scatter[i] + scatter[j]) / dist_centros
+    }), na.rm = TRUE)
+  })
+
+  mean(db_vals)
+}
+
+k_values_metricas <- 2:10
+metricas_k <- tibble()
+for (k_val in k_values_metricas) {
+  kmeans_temp <- kmeans(iris_normalizado, centers = k_val, nstart = 25)
+  fila <- tibble(k = k_val)
+
+  if ("silhouette" %in% metricas_seleccionadas) {
+    fila$silhouette <- mean(silhouette(kmeans_temp$cluster, dist(iris_normalizado))[, 3])
+  }
+  if ("calinski_harabasz" %in% metricas_seleccionadas) {
+    fila$calinski_harabasz <- calinski_harabasz(iris_normalizado, kmeans_temp$cluster)
+  }
+  if ("davies_bouldin" %in% metricas_seleccionadas) {
+    fila$davies_bouldin <- davies_bouldin(iris_normalizado, kmeans_temp$cluster)
+  }
+  if ("adjusted_rand_index" %in% metricas_seleccionadas) {
+    fila$adjusted_rand_index <- adjustedRandIndex(kmeans_temp$cluster, iris_data$variety)
+  }
+
+  metricas_k <- bind_rows(metricas_k, fila)
+}
+
+print(metricas_k)
 
 # ------------------------------------------------------------
 # Aplicar K-means con k=3 (sabemos que hay 3 especies)

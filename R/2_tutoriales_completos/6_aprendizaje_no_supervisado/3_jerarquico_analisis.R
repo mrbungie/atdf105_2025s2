@@ -3,7 +3,7 @@
 # ============================================================
 
 # Instalar paquetes necesarios (ejecutar solo una vez)
-# install.packages(c("tidyverse", "factoextra", "cluster", "dendextend", "gridExtra", "cowplot"))
+# install.packages(c("tidyverse", "factoextra", "cluster", "dendextend", "gridExtra", "cowplot", "mclust"))
 
 # Cargar librerías necesarias
 library(tidyverse)
@@ -12,6 +12,7 @@ library(cluster)
 library(dendextend)
 library(gridExtra)
 library(cowplot)
+library(mclust)
 
 # Establecer semilla para reproducibilidad
 set.seed(42)
@@ -540,50 +541,103 @@ for (distancia in c("euclidean", "manhattan")) {
 # ------------------------------------------------------------
 cat("\n\n=== Resumen de Métricas de Calidad ===\n\n")
 
-# Calcular silueta promedio para cada combinación
+# Elegimos métricas desde una lista más amplia para no quedarnos solo con la silueta.
+metricas_disponibles <- c("silhouette", "calinski_harabasz", "davies_bouldin", "adjusted_rand_index")
+metricas_seleccionadas <- c("silhouette", "calinski_harabasz", "davies_bouldin")
+stopifnot(all(metricas_seleccionadas %in% metricas_disponibles))
+
+calinski_harabasz <- function(x, clusters) {
+  x <- as.matrix(x)
+  clusters <- as.factor(clusters)
+  n <- nrow(x)
+  k <- nlevels(clusters)
+  global_center <- colMeans(x)
+  centers <- rowsum(x, clusters) / as.vector(table(clusters))
+  wss <- 0
+  bss <- 0
+
+  for (cluster_id in levels(clusters)) {
+    puntos <- x[clusters == cluster_id, , drop = FALSE]
+    centro <- centers[cluster_id, ]
+    wss <- wss + sum(rowSums((puntos - matrix(centro, nrow = nrow(puntos), ncol = ncol(x), byrow = TRUE))^2))
+    bss <- bss + nrow(puntos) * sum((centro - global_center)^2)
+  }
+
+  (bss / (k - 1)) / (wss / (n - k))
+}
+
+davies_bouldin <- function(x, clusters) {
+  x <- as.matrix(x)
+  clusters <- as.factor(clusters)
+  centers <- rowsum(x, clusters) / as.vector(table(clusters))
+  scatter <- sapply(levels(clusters), function(cluster_id) {
+    puntos <- x[clusters == cluster_id, , drop = FALSE]
+    centro <- centers[cluster_id, ]
+    mean(sqrt(rowSums((puntos - matrix(centro, nrow = nrow(puntos), ncol = ncol(x), byrow = TRUE))^2)))
+  })
+
+  db_vals <- sapply(seq_along(levels(clusters)), function(i) {
+    max(sapply(seq_along(levels(clusters)), function(j) {
+      if (i == j) return(NA_real_)
+      dist_centros <- sqrt(sum((centers[i, ] - centers[j, ])^2))
+      (scatter[i] + scatter[j]) / dist_centros
+    }), na.rm = TRUE)
+  })
+
+  mean(db_vals)
+}
+
+# Calcular varias métricas de calidad para cada combinación
 metricas_resumen <- tibble()
 
 for (key in names(resultados)) {
   resultado <- resultados[[key]]
-  
-  # Calcular distancia para silueta
-  if (resultado$distancia == "minkowski") {
-    dist_sil <- dist(iris_normalizado, method = "minkowski", p = 3)
-  } else {
-    dist_sil <- dist(iris_normalizado, method = resultado$distancia)
+  fila <- tibble(
+    Distancia = resultado$distancia,
+    Metodo = resultado$metodo,
+    Tipo = resultado$tipo
+  )
+
+  if ("silhouette" %in% metricas_seleccionadas) {
+    if (resultado$distancia == "minkowski") {
+      dist_sil <- dist(iris_normalizado, method = "minkowski", p = 3)
+    } else {
+      dist_sil <- dist(iris_normalizado, method = resultado$distancia)
+    }
+    silueta <- silhouette(resultado$clusters, dist_sil)
+    fila$Silueta_Promedio <- mean(silueta[, 3])
   }
-  
-  silueta <- silhouette(resultado$clusters, dist_sil)
-  silueta_promedio <- mean(silueta[, 3])
-  
-  metricas_resumen <- metricas_resumen %>%
-    bind_rows(tibble(
-      Distancia = resultado$distancia,
-      Metodo = resultado$metodo,
-      Tipo = resultado$tipo,
-      Silueta_Promedio = silueta_promedio
-    ))
+
+  if ("calinski_harabasz" %in% metricas_seleccionadas) {
+    fila$Calinski_Harabasz <- calinski_harabasz(iris_normalizado, resultado$clusters)
+  }
+
+  if ("davies_bouldin" %in% metricas_seleccionadas) {
+    fila$Davies_Bouldin <- davies_bouldin(iris_normalizado, resultado$clusters)
+  }
+
+  if ("adjusted_rand_index" %in% metricas_seleccionadas) {
+    fila$Adjusted_Rand_Index <- adjustedRandIndex(resultado$clusters, iris_data$variety)
+  }
+
+  metricas_resumen <- bind_rows(metricas_resumen, fila)
 }
 
-# Ordenar por silueta promedio
-metricas_resumen <- metricas_resumen %>%
-  arrange(desc(Silueta_Promedio))
+metrica_principal <- switch(
+  metricas_seleccionadas[1],
+  silhouette = "Silueta_Promedio",
+  calinski_harabasz = "Calinski_Harabasz",
+  davies_bouldin = "Davies_Bouldin",
+  adjusted_rand_index = "Adjusted_Rand_Index"
+)
 
-print("Top 10 combinaciones por Silueta Promedio:")
+if (metrica_principal == "Davies_Bouldin") {
+  metricas_resumen <- metricas_resumen %>% arrange(.data[[metrica_principal]])
+} else {
+  metricas_resumen <- metricas_resumen %>% arrange(desc(.data[[metrica_principal]]))
+}
+
+print(paste("Top 10 combinaciones según", metrica_principal, ":"))
 print(head(metricas_resumen, 10))
 
-# Visualizar comparación de siluetas
-ggplot(metricas_resumen, aes(x = reorder(paste(Distancia, Metodo, Tipo, sep = "_"), 
-                                          Silueta_Promedio), 
-                              y = Silueta_Promedio, 
-                              fill = Tipo)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  labs(title = "Comparación de Silueta Promedio",
-       x = "Combinación (Distancia_Método_Tipo)",
-       y = "Silueta Promedio") +
-  theme_minimal() +
-  theme(axis.text.y = element_text(size = 7))
-
-cat("\n=== Análisis completado ===\n")
-
+# Dejamos solo la tabla ordenada porque las métricas usan escalas diferentes y un gráfico puede confundir más de lo que ayuda.
